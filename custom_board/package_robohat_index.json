@@ -6,10 +6,6 @@
       "maintainer": "Robotics Masters",
       "websiteURL": "https://roboticsmasters.co",
       "email" : "techsupport@roboticsmasters.co",
-      "help":
-      {
-        "online": "https://roboticsmasters.co"
-      },
       "platforms":
       [
         {
