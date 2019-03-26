@@ -77,10 +77,9 @@ extern "C"
 // #define digitalPinToTimer(P)
 
 // LEDs
-#define PIN_LED_13           (21u)
+#define PIN_LED_13           (13u)
 #define PIN_LED              PIN_LED_13
 #define LED_BUILTIN          PIN_LED_13
-#define NEOPIXEL_BUILTIN     (8u)
 
 /*
  * Analog pins
