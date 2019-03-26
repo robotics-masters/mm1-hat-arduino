@@ -11,7 +11,7 @@
         {
           "name": "Robo HAT Boards",
           "architecture": "samd",
-          "version": "0.0.3",
+          "version": "0.0.4",
           "category": "Contributed",
           "url": "https://github.com/robotics-masters/mm1-hat-arduino/raw/master/custom_board/RoboHat-0.0.3.zip",
           "archiveFileName": "RoboHat-0.0.3.zip",
