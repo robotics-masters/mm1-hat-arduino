@@ -77,10 +77,27 @@ extern "C"
 // #define digitalPinToTimer(P)
 
 // LEDs
-#define PIN_LED_13           (13u)
+#define PIN_LED_13           (11u)
 #define PIN_LED              PIN_LED_13
 #define LED_BUILTIN          PIN_LED_13
-#define NEOPIXEL_BUILTIN     (8u)
+
+/* ROBO HAT MM1 pins */
+
+#define ROBOHAT_SERVO_1      (2ul)
+#define ROBOHAT_SERVO_2      (ROBOHAT_SERVO_1 + 1)
+#define ROBOHAT_SERVO_3      (ROBOHAT_SERVO_2 + 1)
+#define ROBOHAT_SERVO_4      (ROBOHAT_SERVO_3 + 1)
+#define ROBOHAT_SERVO_5      (ROBOHAT_SERVO_4 + 1)
+#define ROBOHAT_SERVO_6      (ROBOHAT_SERVO_5 + 1)
+#define ROBOHAT_SERVO_7      (ROBOHAT_SERVO_6 + 1)
+#define ROBOHAT_SERVO_8      (ROBOHAT_SERVO_7 + 1)
+
+#define ROBOHAT_EXTERNAL_NEOPIXEL (10ul)
+
+#define ROBOHAT_TOUCH_1      (PIN_A9)
+#define ROBOHAT_TOUCH_2      (CRICKIT_TOUCH_1 + 1)
+#define ROBOHAT_TOUCH_3      (CRICKIT_TOUCH_2 + 1)
+#define ROBOHAT_TOUCH_4      (CRICKIT_TOUCH_3 + 1)
 
 /*
  * Analog pins
