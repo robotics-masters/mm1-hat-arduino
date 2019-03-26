@@ -18,9 +18,9 @@ menu.cache=Cache
 
 robo_hat_mm1.name=Robo HAT MM1 (Native USB Port)
 robo_hat_mm1.vid.0=0x0005
-robo_hat_mm1.pid.0=0x0005
-robo_hat_mm1.vid.1=0x239A
-robo_hat_mm1.pid.1=0x000B
+robo_hat_mm1.pid.0=0x0002
+robo_hat_mm1.vid.1=0x0005
+robo_hat_mm1.pid.1=0x0004
 robo_hat_mm1.upload.tool=bossac
 robo_hat_mm1.upload.protocol=sam-ba
 robo_hat_mm1.upload.maximum_size=262144
@@ -39,8 +39,8 @@ robo_hat_mm1.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
 robo_hat_mm1.build.openocdscript=openocd_scripts/arduino_zero.cfg
 robo_hat_mm1.build.variant=robohat
 robo_hat_mm1.build.variant_system_lib=
-robo_hat_mm1.build.vid=0x239A
-robo_hat_mm1.build.pid=0x800B
+robo_hat_mm1.build.vid=0x0005
+robo_hat_mm1.build.pid=0x0012
 robo_hat_mm1.bootloader.tool=openocd
 robo_hat_mm1.bootloader.file=robohat/bootloader-robohat-v2.0.0-adafruit.9.bin
 
