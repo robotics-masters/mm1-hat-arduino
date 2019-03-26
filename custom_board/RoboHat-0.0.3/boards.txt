@@ -40,7 +40,7 @@ robo_hat_mm1.build.openocdscript=openocd_scripts/arduino_zero.cfg
 robo_hat_mm1.build.variant=robohat
 robo_hat_mm1.build.variant_system_lib=
 robo_hat_mm1.build.vid=0x0005
-robo_hat_mm1.build.pid=0x0012
+robo_hat_mm1.build.pid=0x0002
 robo_hat_mm1.bootloader.tool=openocd
 robo_hat_mm1.bootloader.file=robohat/bootloader-robohat-v2.0.0-adafruit.9.bin
 
