@@ -16,6 +16,7 @@
 
 menu.cache=Cache
 
+# TODO: change to crickit.
 robo_hat_mm1.name=Robo HAT MM1 (Native USB Port)
 robo_hat_mm1.vid.0=0x0005
 robo_hat_mm1.pid.0=0x0002
