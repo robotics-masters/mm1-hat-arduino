@@ -78,8 +78,13 @@ extern "C"
 
 // LEDs
 #define PIN_LED_13           (13u)
+#define PIN_LED_RXL          (31u)
+#define PIN_LED_TXL          (32u)
 #define PIN_LED              PIN_LED_13
+#define PIN_LED2             PIN_LED_RXL
+#define PIN_LED3             PIN_LED_TXL
 #define LED_BUILTIN          PIN_LED_13
+#define NEOPIXEL_BUILTIN     (8u)
 
 /*
  * Analog pins
@@ -165,8 +170,8 @@ static const uint8_t SCK1  = PIN_SPI_SCK ;
  */
 #define WIRE_INTERFACES_COUNT 1
 
-#define PIN_WIRE_SDA         (31u)
-#define PIN_WIRE_SCL         (32u)
+#define PIN_WIRE_SDA         (26u)
+#define PIN_WIRE_SCL         (27u)
 #define PERIPH_WIRE          sercom3
 #define WIRE_IT_HANDLER      SERCOM3_Handler
 
