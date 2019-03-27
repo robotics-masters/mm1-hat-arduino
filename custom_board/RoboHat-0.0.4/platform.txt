@@ -19,7 +19,7 @@
 # For more info:
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5---3rd-party-Hardware-specification
 
-name=Robotics Masters SAMD (32-bits ARM Cortex-M0+ and Cortex-M4) Boards
+name=Robotics Masters MM1 Board
 version=0.0.4
 
 # Compile variables
@@ -111,20 +111,6 @@ recipe.size.regex=\.text\s+([0-9]+).*
 #
 # BOSSA
 #
-
-tools.bossac.path={runtime.tools.bossac-1.7.0.path}
-tools.bossac.cmd=bossac
-
-tools.bossac.upload.params.verbose=-i -d
-tools.bossac.upload.params.quiet=
-tools.bossac.upload.pattern="{path}/{cmd}" {upload.verbose} --port={serial.port.file} -U {upload.native_usb} -i -e -w -v "{build.path}/{build.project_name}.bin" -R
-
-tools.bossac_remote.upload.pattern=/usr/bin/run-bossac {upload.verbose} --port=ttyATH0 -U {upload.native_usb} -e -w -v /tmp/sketch.bin -R
-
-tools.bossac.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
-tools.bossac.upload.network_pattern="{network_cmd}" -address {serial.port} -port 65280 -username arduino -password "{network.password}" -sketch "{build.path}/{build.project_name}.bin" -upload /sketch -b
-
-# v1.8.0
 
 tools.bossac18.path={runtime.tools.bossac-1.8.0-48-gb176eee.path}
 tools.bossac18.cmd=bossac
