@@ -82,8 +82,36 @@ extern "C"
 #define LED_BUILTIN          PIN_LED_13
 
 
-/* CRICKIT pins */
+/* ROBO HAT MM1 pins */
+#define ROBOHAT_SERVO_1      (2ul)
+#define ROBOHAT_SERVO_2      (ROBOHAT_SERVO_1 + 1)
+#define ROBOHAT_SERVO_3      (ROBOHAT_SERVO_2 + 1)
+#define ROBOHAT_SERVO_4      (ROBOHAT_SERVO_3 + 1)
+#define ROBOHAT_SERVO_5      (ROBOHAT_SERVO_4 + 1)
+#define ROBOHAT_SERVO_6      (ROBOHAT_SERVO_5 + 1)
+#define ROBOHAT_SERVO_7      (ROBOHAT_SERVO_6 + 1)
+#define ROBOHAT_SERVO_8      (ROBOHAT_SERVO_7 + 1)
 
+#define ROBOHAT_EXTERNAL_NEOPIXEL (10ul)
+
+#define ROBOHAT_RCH_1      (PIN_A9)
+#define ROBOHAT_RCH_2      (ROBOHAT_RCH_1 + 1)
+#define ROBOHAT_RCH_3      (ROBOHAT_RCH_2 + 1)
+#define ROBOHAT_RCH_4      (ROBOHAT_RCH_3 + 1)
+
+#define ROBOHAT_SIGNAL_1     ()
+#define ROBOHAT_SIGNAL_2     ()
+#define ROBOHAT_SIGNAL_3     (11ul)
+#define ROBOHAT_SIGNAL_4     (12ul)
+#define ROBOHAT_SIGNAL_5     ()
+#define ROBOHAT_SIGNAL_6     ()
+#define ROBOHAT_SIGNAL_7     ()
+#define ROBOHAT_SIGNAL_8     ()
+#define ROBOHAT_SIGNAL_9     ()
+#define ROBOHAT_SIGNAL_10     ()
+#define ROBOHAT_SIGNAL_11     ()
+
+/* CRICKIT pins */
 #define CRICKIT_DRIVE_1      (2ul)
 #define CRICKIT_DRIVE_2      (CRICKIT_DRIVE_1 + 1)
 #define CRICKIT_DRIVE_3      (CRICKIT_DRIVE_2 + 1)

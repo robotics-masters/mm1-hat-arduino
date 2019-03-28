@@ -82,7 +82,6 @@ extern "C"
 #define LED_BUILTIN          PIN_LED_13
 
 /* ROBO HAT MM1 pins */
-
 #define ROBOHAT_SERVO_1      (2ul)
 #define ROBOHAT_SERVO_2      (ROBOHAT_SERVO_1 + 1)
 #define ROBOHAT_SERVO_3      (ROBOHAT_SERVO_2 + 1)
