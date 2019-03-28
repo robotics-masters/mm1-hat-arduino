@@ -21,15 +21,13 @@ robo_hat_mm1.vid.0=0x0005
 robo_hat_mm1.pid.0=0x0002
 robo_hat_mm1.vid.1=0x0005
 robo_hat_mm1.pid.1=0x0012
-robo_hat_mm1.upload.tool=bossac
+robo_hat_mm1.upload.tool=bossac18
 robo_hat_mm1.upload.protocol=sam-ba
 robo_hat_mm1.upload.maximum_size=262144
 robo_hat_mm1.upload.offset=0x2000
 robo_hat_mm1.upload.use_1200bps_touch=true
 robo_hat_mm1.upload.wait_for_upload_port=true
 robo_hat_mm1.upload.native_usb=true
-robo_hat_mm1.upload.params.quiet=
-robo_hat_mm1.upload.pattern="{tools.bossac18.path}/{tools.bossac18.cmd}" {upload.verbose} --port={serial.port.file} -U -i --offset={upload.offset} -e -w -v "{build.path}/{build.project_name}.bin" -R
 robo_hat_mm1.build.mcu=cortex-m0plus
 robo_hat_mm1.build.f_cpu=48000000L
 robo_hat_mm1.build.usb_product="Robo HAT MM1"
