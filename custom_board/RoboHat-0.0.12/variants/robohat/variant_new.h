@@ -202,8 +202,8 @@ static const uint8_t ATN = PIN_ATN;
 
 #define PIN_WIRE_SDA         (0u)
 #define PIN_WIRE_SCL         (1u)
-#define PERIPH_WIRE          sercom1
-#define WIRE_IT_HANDLER      SERCOM1_Handler
+#define PERIPH_WIRE          sercom3
+#define WIRE_IT_HANDLER      SERCOM3_Handler
 
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
