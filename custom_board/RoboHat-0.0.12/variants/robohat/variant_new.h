@@ -105,8 +105,8 @@ extern "C"
 #define ROBOHAT_SIGNAL_4     (12ul)
 #define ROBOHAT_SIGNAL_5     ()
 #define ROBOHAT_SIGNAL_6     ()
-#define ROBOHAT_SIGNAL_7     ()
-#define ROBOHAT_SIGNAL_8     ()
+#define ROBOHAT_SIGNAL_7     ()  // RX: serial 
+#define ROBOHAT_SIGNAL_8     ()  // TX: serial
 #define ROBOHAT_SIGNAL_9     ()
 #define ROBOHAT_SIGNAL_10     ()
 #define ROBOHAT_SIGNAL_11     ()
