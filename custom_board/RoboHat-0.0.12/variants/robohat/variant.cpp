@@ -48,7 +48,7 @@ const PinDescription g_APinDescription[]=
   { PORTB, 9, PIO_TIMER, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER), No_ADC_Channel, PWM4_CH1, TC4_CH1, EXTERNAL_INT_9 },
 
   // 13 (LED)
-  { PORTB, 22, PIO_SERCOM_ALT, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE },  // Yellow LED next to USB  
+  { PORTA, 12, PIO_SERCOM_ALT, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE },  // Yellow LED next to USB  
 
   // A0-A8 - Analog signal pins
   // A0 is duplicated since we mark it starting at analog1, so might as well!
