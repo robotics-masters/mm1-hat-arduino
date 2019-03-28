@@ -99,17 +99,19 @@ extern "C"
 #define ROBOHAT_RCH_3      (ROBOHAT_RCH_2 + 1)
 #define ROBOHAT_RCH_4      (ROBOHAT_RCH_3 + 1)
 
-#define ROBOHAT_SIGNAL_1     ()
-#define ROBOHAT_SIGNAL_2     ()
+#define ROBOHAT_SIGNAL_1     (15ul)
+#define ROBOHAT_SIGNAL_2     (16ul)
 #define ROBOHAT_SIGNAL_3     (11ul)
 #define ROBOHAT_SIGNAL_4     (12ul)
-#define ROBOHAT_SIGNAL_5     ()
-#define ROBOHAT_SIGNAL_6     ()
-#define ROBOHAT_SIGNAL_7     ()  // RX: serial 
-#define ROBOHAT_SIGNAL_8     ()  // TX: serial
-#define ROBOHAT_SIGNAL_9     ()
-#define ROBOHAT_SIGNAL_10     ()
-#define ROBOHAT_SIGNAL_11     ()
+#define ROBOHAT_SIGNAL_5     (17ul)
+#define ROBOHAT_SIGNAL_6     (18ul)
+#define ROBOHAT_SIGNAL_7     (35ul)  // TX: serial 
+#define ROBOHAT_SIGNAL_8     (36ul)  // RX: serial
+#define ROBOHAT_SIGNAL_9     (19ul)
+#define ROBOHAT_SIGNAL_10     (20ul)
+#define ROBOHAT_SIGNAL_11     (13ul)
+
+#define ROBOHAT_IRQ          (22ul)
 
 /* CRICKIT pins */
 #define CRICKIT_DRIVE_1      (2ul)
