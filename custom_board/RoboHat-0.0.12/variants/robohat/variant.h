@@ -16,8 +16,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _VARIANT_ARDUINO_ZERO_
-#define _VARIANT_ARDUINO_ZERO_
+#ifndef _VARIANT_ITSYBITSY_ZERO_
+#define _VARIANT_ITSYBITSY_ZERO_
 
 // The definitions here needs a SAMD core >=1.6.10
 #define ARDUINO_SAMD_VARIANT_COMPLIANCE 10610
@@ -53,11 +53,11 @@ extern "C"
  *----------------------------------------------------------------------------*/
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (42u)
-#define NUM_DIGITAL_PINS     (42u)
+#define PINS_COUNT           (26u)
+#define NUM_DIGITAL_PINS     (20u)
 #define NUM_ANALOG_INPUTS    (12u)
 #define NUM_ANALOG_OUTPUTS   (1u)
-#define analogInputToDigitalPin(p)  ((p < 6u) ? (p) + 14u : -1)
+#define analogInputToDigitalPin(p)  ((p < 12u) ? (p) + PIN_A0 : -1)
 
 #define digitalPinToPort(P)        ( &(PORT->Group[g_APinDescription[P].ulPort]) )
 #define digitalPinToBitMask(P)     ( 1 << g_APinDescription[P].ulPin )
@@ -81,8 +81,8 @@ extern "C"
 #define PIN_LED              PIN_LED_13
 #define LED_BUILTIN          PIN_LED_13
 
-/* ROBO HAT MM1 pins */
 
+/* ROBO HAT MM1 pins */
 #define ROBOHAT_SERVO_1      (2ul)
 #define ROBOHAT_SERVO_2      (ROBOHAT_SERVO_1 + 1)
 #define ROBOHAT_SERVO_3      (ROBOHAT_SERVO_2 + 1)
@@ -94,10 +94,24 @@ extern "C"
 
 #define ROBOHAT_EXTERNAL_NEOPIXEL (10ul)
 
-#define ROBOHAT_TOUCH_1      (PIN_A9)
-#define ROBOHAT_TOUCH_2      (ROBOHAT_TOUCH_1 + 1)
-#define ROBOHAT_TOUCH_3      (ROBOHAT_TOUCH_2 + 1)
-#define ROBOHAT_TOUCH_4      (ROBOHAT_TOUCH_3 + 1)
+#define ROBOHAT_RCH_1      (PIN_A9)
+#define ROBOHAT_RCH_2      (ROBOHAT_RCH_1 + 1)
+#define ROBOHAT_RCH_3      (ROBOHAT_RCH_2 + 1)
+#define ROBOHAT_RCH_4      (ROBOHAT_RCH_3 + 1)
+
+#define ROBOHAT_SIGNAL_1     (15ul)
+#define ROBOHAT_SIGNAL_2     (16ul)
+#define ROBOHAT_SIGNAL_3     (11ul)
+#define ROBOHAT_SIGNAL_4     (12ul)
+#define ROBOHAT_SIGNAL_5     (17ul)
+#define ROBOHAT_SIGNAL_6     (18ul)
+#define ROBOHAT_SIGNAL_7     (35ul)  // TX: serial 
+#define ROBOHAT_SIGNAL_8     (36ul)  // RX: serial
+#define ROBOHAT_SIGNAL_9     (19ul)
+#define ROBOHAT_SIGNAL_10     (20ul)
+#define ROBOHAT_SIGNAL_11     (13ul)
+
+#define ROBOHAT_IRQ          (22ul)
 
 /*
  * Analog pins
@@ -114,7 +128,9 @@ extern "C"
 #define PIN_A9               (PIN_A0 + 9)
 #define PIN_A10              (PIN_A0 + 10)
 #define PIN_A11              (PIN_A0 + 11)
-#define PIN_DAC0             (21ul) //signal 10
+#define PIN_A12              (PIN_A0 + 12)
+#define PIN_A13              (PIN_A0 + 13)
+#define PIN_DAC0             (14ul)
 
 static const uint8_t A0  = PIN_A0;
 static const uint8_t A1  = PIN_A1;
@@ -128,7 +144,8 @@ static const uint8_t A8  = PIN_A8 ;
 static const uint8_t A9  = PIN_A9 ;
 static const uint8_t A10 = PIN_A10 ;
 static const uint8_t A11 = PIN_A11 ;
-
+static const uint8_t A12 = PIN_A12 ;
+static const uint8_t A13 = PIN_A13 ;
 static const uint8_t DAC0 = PIN_DAC0;
 
 #define ADC_RESOLUTION		12
@@ -140,50 +157,38 @@ static const uint8_t ATN = PIN_ATN;
 /*
  * Serial interfaces
  */
+
 // Serial1
-#define PIN_SERIAL1_TX       (30ul)
-#define PIN_SERIAL1_RX       (31ul)
+#define PIN_SERIAL1_TX       (35ul)
+#define PIN_SERIAL1_RX       (36ul)
 #define PAD_SERIAL1_TX       (UART_TX_PAD_2)
 #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_3)
 
 /*
  * SPI Interfaces
  */
-#define SPI_INTERFACES_COUNT 2
+#define SPI_INTERFACES_COUNT 1
 
+/* SPI FLASH */
 #define PIN_SPI_MISO         (28u)
 #define PIN_SPI_MOSI         (29u)
 #define PIN_SPI_SCK          (30u)
-#define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_2_SCK_3
-#define PAD_SPI_RX           SERCOM_RX_PAD_0
+#define PERIPH_SPI           sercom2
+#define PAD_SPI_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI_RX           SERCOM_RX_PAD_2
 
-static const uint8_t SS	  = PIN_A2 ;	// SERCOM4 last PAD is present on A2 but HW SS isn't used. Set here only for reference.
+static const uint8_t SS   = 31 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
-
-
-#define PIN_SPI1_MISO         (36u)
-#define PIN_SPI1_MOSI         (37u)
-#define PIN_SPI1_SCK          (38u)
-#define PERIPH_SPI1           sercom2
-#define PAD_SPI1_TX           SPI_PAD_0_SCK_1
-#define PAD_SPI1_RX           SERCOM_RX_PAD_2
-
-static const uint8_t SS1   = 39 ;	// HW SS isn't used. Set here only for reference.
-static const uint8_t MOSI1 = PIN_SPI_MOSI ;
-static const uint8_t MISO1 = PIN_SPI_MISO ;
-static const uint8_t SCK1  = PIN_SPI_SCK ;
-
 
 /*
  * Wire Interfaces
  */
 #define WIRE_INTERFACES_COUNT 1
 
-#define PIN_WIRE_SDA         (26u)
-#define PIN_WIRE_SCL         (27u)
+#define PIN_WIRE_SDA         (0u)
+#define PIN_WIRE_SCL         (1u)
 #define PERIPH_WIRE          sercom3
 #define WIRE_IT_HANDLER      SERCOM3_Handler
 
@@ -193,10 +198,13 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE (33ul)
-#define PIN_USB_DM          (34ul)
-#define PIN_USB_DP          (35ul)
-
+#define PIN_USB_HOST_ENABLE (32ul)
+#define PIN_USB_DM          (33ul)
+#define PIN_USB_DP          (34ul)
+/*
+ * I2S Interfaces
+ */
+#define I2S_INTERFACES_COUNT 0
 
 #ifdef __cplusplus
 }
