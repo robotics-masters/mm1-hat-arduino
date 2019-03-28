@@ -169,7 +169,7 @@ static const uint8_t ATN = PIN_ATN;
  */
 #define SPI_INTERFACES_COUNT 1
 
-
+/* SPI FLASH */
 #define PIN_SPI1_MISO         (28u)
 #define PIN_SPI1_MOSI         (29u)
 #define PIN_SPI1_SCK          (30u)
