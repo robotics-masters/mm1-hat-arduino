@@ -113,34 +113,6 @@ extern "C"
 
 #define ROBOHAT_IRQ          (22ul)
 
-/* CRICKIT pins */
-#define CRICKIT_DRIVE_1      (2ul)
-#define CRICKIT_DRIVE_2      (CRICKIT_DRIVE_1 + 1)
-#define CRICKIT_DRIVE_3      (CRICKIT_DRIVE_2 + 1)
-#define CRICKIT_DRIVE_4      (CRICKIT_DRIVE_3 + 1)
-
-#define CRICKIT_SERVO_1      (6ul)
-#define CRICKIT_SERVO_2      (CRICKIT_SERVO_1 + 1)
-#define CRICKIT_SERVO_3      (CRICKIT_SERVO_2 + 1)
-#define CRICKIT_SERVO_4      (CRICKIT_SERVO_3 + 1)
-
-#define CRICKIT_INTERNAL_NEOPIXEL (10ul)
-#define CRICKIT_EXTERNAL_NEOPIXEL (11ul)
-
-#define CRICKIT_IRQ          (12ul)
-
-#define CRICKIT_TOUCH_1      (PIN_A9)
-#define CRICKIT_TOUCH_2      (CRICKIT_TOUCH_1 + 1)
-#define CRICKIT_TOUCH_3      (CRICKIT_TOUCH_2 + 1)
-#define CRICKIT_TOUCH_4      (CRICKIT_TOUCH_3 + 1)
-
-#define CRICKIT_VIN_SENSE    (PIN_A13)
-
-#define CRICKIT_MOTOR_1A     (28ul)
-#define CRICKIT_MOTOR_1B     (29ul)
-#define CRICKIT_MOTOR_2A     (30ul)
-#define CRICKIT_MOTOR_2B     (31ul)
-
 /*
  * Analog pins
  */
