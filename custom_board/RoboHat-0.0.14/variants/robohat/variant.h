@@ -103,46 +103,57 @@ static const uint8_t D6  = ROBOHAT_SERVO7;
 static const uint8_t D7  = ROBOHAT_SERVO8;
 
 #define ROBOHAT_EXTERNAL_NEOPIXEL (12ul)
+static const uint8_t NEOPIXEL = ROBOHAT_EXTERNAL_NEOPIXEL;
 
 #define ROBOHAT_RCH1      (14ul)
 #define ROBOHAT_RCH2      (ROBOHAT_RCH1 + 1)
 #define ROBOHAT_RCH3      (ROBOHAT_RCH2 + 1)
 #define ROBOHAT_RCH4      (ROBOHAT_RCH3 + 1)
+#define PIN_DAC0          (14ul)
+#define PIN_BATTERY       (ROBOHAT_RCH4 + 1)
 
 static const uint8_t A0  = ROBOHAT_RCH1;
 static const uint8_t A1  = ROBOHAT_RCH2;
 static const uint8_t A2  = ROBOHAT_RCH3;
 static const uint8_t A3  = ROBOHAT_RCH4;
+static const uint8_t DAC0 = PIN_DAC0;
+static const uint8_t BATTERY = PIN_BATTERY;
 
+#define PIN_A0               (14ul)
+#define PIN_A1               (PIN_A0 + 1)
+#define PIN_A2               (PIN_A0 + 2)
+#define PIN_A3               (PIN_A0 + 3)
+#define PIN_A4               (PIN_A0 + 4)
+#define PIN_BATTERY          (PIN_A0 + 5)
 
-#define ADC_RESOLUTION		12
+#define ADC_RESOLUTION		20
 
 // Other pins
-#define PIN_POWER_ENABLE              (37ul)
+#define PIN_POWER_ENABLE              (38ul)
 static const uint8_t POWER_ENABLE = PIN_POWER_ENABLE;
-#define PIN_POWER_OFF                 (38ul)
+#define PIN_POWER_OFF                 (39ul)
 static const uint8_t POWER_OFF = PIN_POWER_OFF;
 /*
  * Serial interfaces
  */
 
 // Serial
-#define PIN_SERIAL_RX       (32ul)
-#define PIN_SERIAL_TX       (33ul)
-#define PAD_SERIAL_TX       (UART_TX_PAD_2)
-#define PAD_SERIAL_RX       (SERCOM_RX_PAD_3)
+// #define PIN_SERIAL_RX       (32ul)
+// #define PIN_SERIAL_TX       (33ul)
+// #define PAD_SERIAL_TX       (UART_TX_PAD_2)
+// #define PAD_SERIAL_RX       (SERCOM_RX_PAD_3)
 
 // Serial1
-#define PIN_SERIAL1_TX       (26ul)
-#define PIN_SERIAL1_RX       (29ul)
-#define PAD_SERIAL1_TX       (UART_TX_PAD_2)
-#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_3)
+#define PIN_SERIAL1_TX       (27ul)
+#define PIN_SERIAL1_RX       (28ul)
+#define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
 
 // SerialGPS
-#define PIN_SERIAL2_TX       (35ul)
-#define PIN_SERIAL2_RX       (36ul)
-#define PAD_SERIAL2_TX       (UART_TX_PAD_2)
-#define PAD_SERIAL2_RX       (SERCOM_RX_PAD_3)
+#define PIN_SERIAL2_TX       (31ul)
+#define PIN_SERIAL2_RX       (32ul)
+#define PAD_SERIAL2_TX       (UART_TX_PAD_0)
+#define PAD_SERIAL2_RX       (SERCOM_RX_PAD_1)
 
 /*
  * SPI Interfaces
@@ -150,27 +161,27 @@ static const uint8_t POWER_OFF = PIN_POWER_OFF;
 #define SPI_INTERFACES_COUNT 2
 
 /* External SPI */
-#define PIN_SPI_MISO         (18u)
-#define PIN_SPI_MOSI         (19u)
-#define PIN_SPI_SCK          (20u)
+#define PIN_SPI_MISO         (19u)
+#define PIN_SPI_MOSI         (20u)
+#define PIN_SPI_SCK          (21u)
 #define PERIPH_SPI           sercom4
-#define PAD_SPI_TX    SPI_PAD_0_SCK_1
-#define PAD_SPI_RX    SERCOM_RX_PAD_3
+#define PAD_SPI_TX    SPI_PAD_2_SCK_3
+#define PAD_SPI_RX    SERCOM_RX_PAD_0
 
-static const uint8_t SS   = 21 ;	// HW SS isn't used. Set here only for reference.
+static const uint8_t SS   = 22 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
 
 /* SPI FLASH */
-#define PIN_SPI1_MISO         (22u)
-#define PIN_SPI1_MOSI         (23u)
-#define PIN_SPI1_SCK          (24u)
+#define PIN_SPI1_MISO         (23u)
+#define PIN_SPI1_MOSI         (24u)
+#define PIN_SPI1_SCK          (25u)
 #define PERIPH_SPI1          sercom2
 #define PAD_SPI1_TX   SPI_PAD_0_SCK_1
-#define PAD_SPI1_RX   SERCOM_RX_PAD_3
+#define PAD_SPI1_RX   SERCOM_RX_PAD_2
 
-static const uint8_t SS1   = 25 ;	// HW SS isn't used. Set here only for reference.
+static const uint8_t SS1   = 26 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI1 = PIN_SPI1_MOSI ;
 static const uint8_t MISO1 = PIN_SPI1_MISO ;
 static const uint8_t SCK1  = PIN_SPI1_SCK ;
@@ -201,9 +212,9 @@ static const uint8_t SCL1 = PIN_WIRE1_SCL;
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE (28ul)
-#define PIN_USB_DM          (33ul)
-#define PIN_USB_DP          (34ul)
+#define PIN_USB_HOST_ENABLE (35ul)
+#define PIN_USB_DM          (36ul)
+#define PIN_USB_DP          (37ul)
 /*
  * I2S Interfaces
  */
@@ -230,7 +241,7 @@ extern SERCOM sercom3;
 extern SERCOM sercom4;
 extern SERCOM sercom5;
 
-extern Uart Serial;
+// extern Uart Serial;
 extern Uart Serial1;
 extern Uart SerialGPS;
 
@@ -260,3 +271,6 @@ extern Uart SerialGPS;
 
 #define SERIAL_PORT_HARDWARE        SerialGPS
 #define SERIAL_PORT_HARDWARE_OPEN   SerialGPS
+
+
+#endif
