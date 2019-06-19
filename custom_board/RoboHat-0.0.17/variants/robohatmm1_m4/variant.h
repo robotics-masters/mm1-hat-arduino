@@ -120,7 +120,7 @@ static const uint8_t ATN = PIN_ATN;
 /*
  * Serial interfaces
  */
-// Serial1
+// Serial1 (SERCOM5)
 #define PIN_SERIAL1_RX       (0ul)
 #define PIN_SERIAL1_TX       (1ul)
 #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
@@ -161,22 +161,30 @@ static const uint8_t SCK1  = PIN_SPI1_SCK ;
 /*
  * Wire Interfaces
  */
-#define WIRE_INTERFACES_COUNT 1
+#define WIRE_INTERFACES_COUNT 2
 
-#define PIN_WIRE_SDA         (0u)
-#define PIN_WIRE_SCL         (1u)
+#define PIN_WIRE_SDA         (22u)
+#define PIN_WIRE_SCL         (21u)
 #define PERIPH_WIRE          sercom3
 #define WIRE_IT_HANDLER      SERCOM3_Handler
 
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
 
+#define PIN_WIRE1_SDA         (32u)
+#define PIN_WIRE1_SCL         (33u)
+#define PERIPH_WIRE1          sercom1
+#define WIRE1_IT_HANDLER      SERCOM1_Handler
+
+static const uint8_t SDA1 = PIN_WIRE1_SDA;
+static const uint8_t SCL1 = PIN_WIRE1_SCL;
+
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE (32ul)
-#define PIN_USB_DM          (33ul)
-#define PIN_USB_DP          (34ul)
+#define PIN_USB_HOST_ENABLE (25ul)
+#define PIN_USB_DM          (26ul)
+#define PIN_USB_DP          (27ul)
 /*
  * I2S Interfaces
  */
