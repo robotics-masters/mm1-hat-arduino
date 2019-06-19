@@ -95,7 +95,8 @@ const PinDescription g_APinDescription[]=
 
 } ;
 
-const void* g_apTCInstances[TCC_INST_NUM+TC_INST_NUM]={ TCC0, TCC1, TCC2, TC3, TC4, TC5 } ;
+const void* g_apTCInstances[TCC_INST_NUM+TC_INST_NUM]={ TCC0, TCC1, TCC2, TC0, TC1, TC2, TC3 } ;
+const uint32_t GCLK_CLKCTRL_IDs[TCC_INST_NUM+TC_INST_NUM] = { TCC0_GCLK_ID, TCC1_GCLK_ID, TCC2_GCLK_ID, TC0_GCLK_ID, TC1_GCLK_ID, TC2_GCLK_ID, TC3_GCLK_ID } ;
 
 // Multi-serial objects instantiation
 SERCOM sercom0( SERCOM0 ) ;
@@ -105,10 +106,29 @@ SERCOM sercom3( SERCOM3 ) ;
 SERCOM sercom4( SERCOM4 ) ;
 SERCOM sercom5( SERCOM5 ) ;
 
-Uart Serial1( &sercom5, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX ) ;
+// Multi-serial objects instantiation
+SERCOM sercom0( SERCOM0 ) ;
+SERCOM sercom1( SERCOM1 ) ;
+SERCOM sercom2( SERCOM2 ) ;
+SERCOM sercom3( SERCOM3 ) ;
+SERCOM sercom4( SERCOM4 ) ;
+SERCOM sercom5( SERCOM5 ) ;
 
-void SERCOM5_Handler()
+Uart Serial1( &sercom3, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX ) ;
+
+void SERCOM3_0_Handler()
 {
   Serial1.IrqHandler();
 }
-
+void SERCOM3_1_Handler()
+{
+  Serial1.IrqHandler();
+}
+void SERCOM3_2_Handler()
+{
+  Serial1.IrqHandler();
+}
+void SERCOM3_3_Handler()
+{
+  Serial1.IrqHandler();
+}
