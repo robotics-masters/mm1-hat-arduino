@@ -25,10 +25,10 @@ const PinDescription g_APinDescription[]=
 {
   // 0..13 - Digital pins
   // ----------------------
-  // 0/1 - SERCOM/I2C
-  { PORTA, 22, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SDA
-  { PORTA, 23, PIO_SERCOM, PIN_ATTR_NONE, No_ADC_Channel, NOT_ON_PWM, NOT_ON_TIMER, EXTERNAL_INT_NONE }, // SCL
-  
+  // 0/1 - SERCOM/UART (Serial1)
+  { PORTB,  3, PIO_SERCOM_ALT, PIN_ATTR_PWM_E, ADC_Channel15, TC6_CH1, TC7_CH1, EXTERNAL_INT_3 }, // SERCOM 5.1
+  { PORTB,  2, PIO_SERCOM_ALT, PIN_ATTR_PWM_E, ADC_Channel14, TC6_CH0, TC7_CH0, EXTERNAL_INT_2 }, // SERCOM 5.0
+    
   // D2 to D9 - Servo 1 thru 8
   // 2..9 - Servo pins
   { PORTB, 10, PIO_TIMER_ALT, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM|PIN_ATTR_TIMER_ALT), No_ADC_Channel, PWM0_CH4, TCC0_CH4, EXTERNAL_INT_10 },
