@@ -116,11 +116,7 @@ static const uint8_t DAC1 = PIN_DAC1;
 #define PIN_ATN              (26ul)
 static const uint8_t ATN = PIN_ATN;
 
-// Serial1
-#define PIN_SERIAL1_RX       (0ul)
-#define PIN_SERIAL1_TX       (1ul)
-#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
-#define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+
 
 /* ROBO HAT MM1 pins */
 #define ROBOHAT_SERVO_1      (2ul)
@@ -197,17 +193,17 @@ static const uint8_t ATN = PIN_ATN;
 /*
  * Serial interfaces
  */
-
 // Serial1
-#define PIN_SERIAL1_TX       (35ul)
-#define PIN_SERIAL1_RX       (36ul)
-#define PAD_SERIAL1_TX       (UART_TX_PAD_2)
-#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_3)
+#define PIN_SERIAL1_RX       (0ul)
+#define PIN_SERIAL1_TX       (1ul)
+#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+
 
 /*
  * SPI Interfaces
  */
-#define SPI_INTERFACES_COUNT 1
+#define SPI_INTERFACES_COUNT 2
 
 /* SPI FLASH */
 #define PIN_SPI_MISO         (28u)
