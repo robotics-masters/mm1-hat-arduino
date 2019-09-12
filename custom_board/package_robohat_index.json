@@ -15,8 +15,8 @@
           "category": "Contributed",
           "url": "https://github.com/peterpanstechland/mm1-hat-arduino/blob/peter/custom_board/RoboHat-0.0.15.zip?raw=true",
           "archiveFileName": "RoboHat-0.0.15.zip",
-          "checksum": "SHA-256:843be41d02baaeabe872170f0a3148a4be70b3f10da40f8459cbeca6b23f59fb",
-          "size": "3462032",
+          "checksum": "SHA-256:8ec85a7bda662f409bf2ac3ace378f31486185e49494f98fe712519fb40fc5a7",
+          "size": "3463657",
           "boards": [
             {
               "name": "Robo HAT MM1"
