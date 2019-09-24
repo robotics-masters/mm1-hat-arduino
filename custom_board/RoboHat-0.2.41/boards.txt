@@ -15,13 +15,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 menu.cache=Cache
+menu.speed=CPU Speed
+menu.opt=Optimize
+menu.maxqspi=Max QSPI
+menu.usbstack=USB Stack
+menu.debug=Debug
 
+# Robo HAT MM1 M0 (SAMD21)
+# ------------------------------
 robo_hat_mm1.name=Robo HAT MM1 (SAMD21)
 robo_hat_mm1.vid.0=0x1209
 robo_hat_mm1.pid.0=0x4D44
 robo_hat_mm1.vid.1=0x1209
 robo_hat_mm1.pid.1=0x4D45
-robo_hat_mm1.upload.tool=bossac18
+robo_hat_mm1.upload.tool=bossac
 robo_hat_mm1.upload.protocol=sam-ba
 robo_hat_mm1.upload.maximum_size=262144
 robo_hat_mm1.upload.offset=0x2000
@@ -30,22 +37,28 @@ robo_hat_mm1.upload.wait_for_upload_port=true
 robo_hat_mm1.upload.native_usb=true
 robo_hat_mm1.build.mcu=cortex-m0plus
 robo_hat_mm1.build.f_cpu=48000000L
-robo_hat_mm1.build.usb_product="Robo HAT MM1"
-robo_hat_mm1.build.usb_manufacturer="Robotics Masters"
+robo_hat_mm1.build.usb_product="Robo HAT MM1 M0"
+robo_hat_mm1.build.usb_manufacturer="Robotics Masters LTD"
 robo_hat_mm1.build.board=ROBOHATMM1_M0
 robo_hat_mm1.build.core=arduino
-robo_hat_mm1.build.extra_flags=-DCRYSTALLESS -DROBOTICSMASTERS_ROBOHATMM1_M0 -D__SAMD21G18A__ -DARM_MATH_CM0PLUS {build.usb_flags}
+robo_hat_mm1.build.extra_flags=-DCRYSTALLESS -DARDUINO_SAMD_ZERO -DARM_MATH_CM0PLUS -DROBOTICSMASTERS_ROBOHATMM1_M0 -D__SAMD21G18A__ {build.usb_flags}
 robo_hat_mm1.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
-robo_hat_mm1.build.openocdscript=openocd_scripts/arduino_zero.cfg
-robo_hat_mm1.build.variant=robohat
+robo_hat_mm1.build.openocdscript=openocd_scripts/robohatmm1_m0.cfg
+robo_hat_mm1.build.variant=robohatmm1_m0
 robo_hat_mm1.build.variant_system_lib=
 robo_hat_mm1.build.vid=0x1209
 robo_hat_mm1.build.pid=0x4D44
 robo_hat_mm1.bootloader.tool=openocd
-robo_hat_mm1.bootloader.file=robohat/bootloader-robohat-v2.0.0-adafruit.9.bin
+robo_hat_mm1.bootloader.file=robohatmm1M0/bootloader-robohat-v2.0.0-adafruit.9.bin
+robo_hat_mm1.menu.usbstack.arduino=Arduino
+robo_hat_mm1.menu.usbstack.tinyusb=TinyUSB
+robo_hat_mm1.menu.usbstack.tinyusb.build.flags.usbstack=-DUSE_TINYUSB
+robo_hat_mm1.menu.debug.off=Off
+robo_hat_mm1.menu.debug.on=On
+robo_hat_mm1.menu.debug.on.build.flags.debug=-g
 
 
-# Robotics Masters Robo HAT MM1 (SAMD51)
+# Robo HAT MM1 M4 (SAMD51)
 # ------------------------------
 robo_hat_mm1_m4.name=Robo HAT MM1 (SAMD51)
 robo_hat_mm1_m4.vid.0=0x1209
@@ -61,8 +74,8 @@ robo_hat_mm1_m4.upload.wait_for_upload_port=true
 robo_hat_mm1_m4.upload.native_usb=true
 robo_hat_mm1_m4.build.mcu=cortex-m4
 #robo_hat_mm1_m4.build.f_cpu=120000000L
-robo_hat_mm1_m4.build.usb_product="Robo HAT MM1"
-robo_hat_mm1_m4.build.usb_manufacturer="Robotics Masters"
+robo_hat_mm1_m4.build.usb_product="Robo HAT MM1 M4"
+robo_hat_mm1_m4.build.usb_manufacturer="Robotics Masters LTD"
 robo_hat_mm1_m4.build.board=ROBOHATMM1_M4
 robo_hat_mm1_m4.build.core=arduino
 robo_hat_mm1_m4.build.extra_flags=-D__SAMD51G19A__ -DROBOTICSMASTERS_ROBOHATMM1_M4 -D__SAMD51__ {build.usb_flags} -D__FPU_PRESENT -DARM_MATH_CM4 -DCRYSTALLESS -mfloat-abi=hard -mfpu=fpv4-sp-d16
@@ -73,7 +86,7 @@ robo_hat_mm1_m4.build.variant_system_lib=
 robo_hat_mm1_m4.build.vid=0x1209
 robo_hat_mm1_m4.build.pid=0x4D45
 robo_hat_mm1_m4.bootloader.tool=openocd
-robo_hat_mm1_m4.bootloader.file=robohatmm1_m4/bootloader-robohatmm1_m4-v3.6.0-adafruit.5.bin
+robo_hat_mm1_m4.bootloader.file=robohatmm1M4/bootloader-robohatmm1_m4-v3.6.0-adafruit.5.bin
 robo_hat_mm1_m4.compiler.arm.cmsis.ldflags="-L{build.variant.path}" -larm_cortexM4lf_math -mfloat-abi=hard -mfpu=fpv4-sp-d16
 robo_hat_mm1_m4.menu.cache.on=Enabled
 robo_hat_mm1_m4.menu.cache.on.build.cache_flags=-DENABLE_CACHE
