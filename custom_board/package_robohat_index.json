@@ -59,8 +59,8 @@
           "version": "0.0.24",
           "archiveFileName": "RoboHat-0.0.24.zip",
           "url": "https://github.com/robotics-masters/mm1-hat-arduino/raw/master/custom_board/RoboHat-0.0.24.zip",
-          "checksum": "SHA-256:f3d557e2c9844574e454aefab2aef5898ca7df29e920b21715ccc802d09e8a1c",
-          "size": "5989665",
+          "checksum": "SHA-256:69382b7669a421e3efed16b00f0142e01eccf6c26d862d4b2b83a911dc3501e6",
+          "size": "3634029",
           "boards": [
             {
               "name": "Robo HAT MM1 M0"

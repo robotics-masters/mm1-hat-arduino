@@ -57,7 +57,7 @@ extern "C"
  *----------------------------------------------------------------------------*/
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (39u)  
+#define PINS_COUNT           (40u)  
 #define NUM_DIGITAL_PINS     (27u)  
 #define NUM_ANALOG_INPUTS    (7u)   
 #define NUM_ANALOG_OUTPUTS   (2u)   
@@ -120,11 +120,17 @@ static const uint8_t ATN = PIN_ATN;
 /*
  * Serial interfaces
  */
-// Serial1 (SERCOM5)
+// Serial1 (SERCOM1 - RPi)
 #define PIN_SERIAL1_RX       (0ul)
 #define PIN_SERIAL1_TX       (1ul)
 #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
 #define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+
+// Serial2 (SERCOM5 - GPS)
+#define PIN_SERIAL2_RX       (39ul)
+#define PIN_SERIAL2_TX       (40ul)
+#define PAD_SERIAL2_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIAL2_TX       (UART_TX_PAD_0)
 
 
 /*
@@ -133,12 +139,12 @@ static const uint8_t ATN = PIN_ATN;
 #define SPI_INTERFACES_COUNT 2
 
 /* SPI FLASH */
-#define PIN_SPI_MISO         (10u)
-#define PIN_SPI_MOSI         (11u)
-#define PIN_SPI_SCK          (12u)
+#define PIN_SPI_MISO         (12u)
+#define PIN_SPI_MOSI         (10u)
+#define PIN_SPI_SCK          (11u)
 #define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_3_SCK_1
-#define PAD_SPI_RX           SERCOM_RX_PAD_2
+#define PAD_SPI_TX           SPI_PAD_0_SCK_2
+#define PAD_SPI_RX           SERCOM_RX_PAD_3
 
 static const uint8_t SS   = 35 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI = PIN_SPI_MOSI ;
@@ -171,8 +177,8 @@ static const uint8_t SCK1  = PIN_SPI1_SCK ;
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
 
-#define PIN_WIRE1_SDA         (32u)
-#define PIN_WIRE1_SCL         (33u)
+#define PIN_WIRE1_SDA         (33u)
+#define PIN_WIRE1_SCL         (32u)
 #define PERIPH_WIRE1          sercom1
 #define WIRE1_IT_HANDLER      SERCOM1_Handler
 
@@ -185,10 +191,14 @@ static const uint8_t SCL1 = PIN_WIRE1_SCL;
 #define PIN_USB_HOST_ENABLE (25ul)
 #define PIN_USB_DM          (26ul)
 #define PIN_USB_DP          (27ul)
+
 /*
  * I2S Interfaces
  */
 #define I2S_INTERFACES_COUNT 0
+
+#define I2S_DEVICE          0
+// no I2S on G19!
 
 #ifdef __cplusplus
 }
