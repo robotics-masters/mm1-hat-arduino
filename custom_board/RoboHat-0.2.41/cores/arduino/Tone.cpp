@@ -80,10 +80,10 @@ void tone (uint32_t outputPin, uint32_t frequency, uint32_t duration)
   {
     firstTimeRunning = true;
     
-    NVIC_SetPriority(TONE_TC_IRQn, 0);
+    NVIC_SetPriority(TONE_TC_IRQn, 5);
 
 #if defined(__SAMD51__)
-	GCLK->PCHCTRL[TONE_TC_GCLK_ID].reg = GCLK_PCHCTRL_GEN_GCLK0_Val | (1 << GCLK_PCHCTRL_CHEN_Pos);
+	  GCLK->PCHCTRL[TONE_TC_GCLK_ID].reg = GCLK_PCHCTRL_GEN_GCLK0_Val | (1 << GCLK_PCHCTRL_CHEN_Pos);
 #else
     // Enable GCLK for TC4 and TC5 (timer counter input clock)
     GCLK->CLKCTRL.reg = (uint16_t) (GCLK_CLKCTRL_CLKEN | GCLK_CLKCTRL_GEN_GCLK0 | GCLK_CLKCTRL_ID(GCM_TC4_TC5));
@@ -136,7 +136,7 @@ void tone (uint32_t outputPin, uint32_t frequency, uint32_t duration)
     default: break;
   }
 
-  toggleCount = (duration > 0 ? frequency * duration * 2 / 1000UL : -1);
+  toggleCount = (duration > 0 ? frequency * duration * 2 / 1000UL : -1LL);
 
   resetTC(TONE_TC);
 
@@ -167,8 +167,8 @@ void tone (uint32_t outputPin, uint32_t frequency, uint32_t duration)
     lastOutputPin = outputPin;
     digitalWrite(outputPin, LOW);
     pinMode(outputPin, OUTPUT);
-    toneIsActive = true;
   }
+  toneIsActive = true;
 
   // Enable TONE_TC
   TONE_TC->COUNT16.CTRLA.reg |= TC_CTRLA_ENABLE;

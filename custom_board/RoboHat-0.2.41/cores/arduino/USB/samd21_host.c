@@ -17,6 +17,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+#ifndef USE_TINYUSB
 
 #include <stdio.h>
 #include <stdint.h>
@@ -63,7 +64,6 @@ void UHD_Init(void)
 	uint32_t pad_transn;
 	uint32_t pad_transp;
 	uint32_t pad_trim;
-	uint32_t i;
 
 	USB_SetHandler(&UHD_Handler);
 
@@ -172,10 +172,7 @@ void UHD_Init(void)
 	USB->HOST.DESCADD.reg = (uint32_t)(&usb_pipe_table[0]);
 	// For USB_SPEED_FULL
 	uhd_force_full_speed();
-	for (i = 0; i < sizeof(usb_pipe_table); i++)
-	{
-		(*(uint32_t *)(&usb_pipe_table[0] + i)) = 0;
-	}
+	memset((void *)usb_pipe_table, 0, sizeof(usb_pipe_table));
 
 	uhd_state = UHD_STATE_NO_VBUS;
 
@@ -557,3 +554,5 @@ uint32_t UHD_Pipe_Is_Transfer_Complete(uint32_t ul_pipe, uint32_t ul_token_type)
 // }
 
 #endif //  HOST_DEFINED
+
+#endif // USE_TINYUSB
