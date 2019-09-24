@@ -120,11 +120,17 @@ static const uint8_t ATN = PIN_ATN;
 /*
  * Serial interfaces
  */
-// Serial1 (SERCOM5)
+// Serial1 (SERCOM1 - RPi)
 #define PIN_SERIAL1_RX       (0ul)
 #define PIN_SERIAL1_TX       (1ul)
 #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
 #define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+
+// Serial2 (SERCOM5 - GPS)
+#define PIN_SERIAL2_RX       (39ul)
+#define PIN_SERIAL2_TX       (40ul)
+#define PAD_SERIAL2_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIAL2_TX       (UART_TX_PAD_0)
 
 
 /*
@@ -133,12 +139,12 @@ static const uint8_t ATN = PIN_ATN;
 #define SPI_INTERFACES_COUNT 2
 
 /* SPI FLASH */
-#define PIN_SPI_MISO         (10u)
-#define PIN_SPI_MOSI         (11u)
-#define PIN_SPI_SCK          (12u)
+#define PIN_SPI_MISO         (12u)
+#define PIN_SPI_MOSI         (10u)
+#define PIN_SPI_SCK          (11u)
 #define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_3_SCK_1
-#define PAD_SPI_RX           SERCOM_RX_PAD_2
+#define PAD_SPI_TX           SPI_PAD_0_SCK_2
+#define PAD_SPI_RX           SERCOM_RX_PAD_3
 
 static const uint8_t SS   = 35 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI = PIN_SPI_MOSI ;
