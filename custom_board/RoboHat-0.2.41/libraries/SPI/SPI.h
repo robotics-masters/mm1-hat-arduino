@@ -21,6 +21,7 @@
 #define _SPI_H_INCLUDED
 
 #include <Arduino.h>
+#include <Adafruit_ZeroDMA.h>
 
 // SPI_HAS_TRANSACTION means SPI has
 //   - beginTransaction()
@@ -37,12 +38,25 @@
 #define SPI_MODE2 0x03
 #define SPI_MODE3 0x01
 
-#if defined(ARDUINO_ARCH_SAMD)
+#if defined(__SAMD51__)
+  // SAMD51 has configurable MAX_SPI, else use peripheral clock default.
+  // Update: changing MAX_SPI via compiler flags is DEPRECATED, because
+  // this affects ALL SPI peripherals including some that should NOT be
+  // changed (e.g. anything using SD card). Use the setClockSource()
+  // function instead. This is left here for compatibility with interim code.
+  #if !defined(MAX_SPI)
+    #define MAX_SPI 24000000
+  #endif
+  #define SPI_MIN_CLOCK_DIVIDER 1
+#else
   // The datasheet specifies a typical SPI SCK period (tSCK) of 42 ns,
   // see "Table 36-48. SPI Timing Characteristics and Requirements",
   // which translates into a maximum SPI clock of 23.8 MHz.
   // Conservatively, the divider is set for a 12 MHz maximum SPI clock.
-  #define SPI_MIN_CLOCK_DIVIDER (uint8_t)(1 + ((F_CPU - 1) / 12000000))
+  #if !defined(MAX_SPI)
+    #define MAX_SPI 12000000
+  #endif
+  #define SPI_MIN_CLOCK_DIVIDER (uint8_t)(1 + ((F_CPU - 1) / MAX_SPI))
 #endif
 
 class SPISettings {
@@ -64,7 +78,11 @@ class SPISettings {
   }
 
   void init_AlwaysInline(uint32_t clock, BitOrder bitOrder, uint8_t dataMode) __attribute__((__always_inline__)) {
-    this->clockFreq = (clock >= (F_CPU / SPI_MIN_CLOCK_DIVIDER) ? F_CPU / SPI_MIN_CLOCK_DIVIDER : clock);
+#if defined(__SAMD51__)
+    this->clockFreq = clock; // Clipping handled in SERCOM.cpp
+#else
+    this->clockFreq = (clock >= (MAX_SPI * 2 / SPI_MIN_CLOCK_DIVIDER) ? MAX_SPI * 2 / SPI_MIN_CLOCK_DIVIDER : clock);
+#endif
 
     this->bitOrder = (bitOrder == MSBFIRST ? MSB_FIRST : LSB_FIRST);
 
@@ -94,10 +112,12 @@ class SPIClass {
   public:
   SPIClass(SERCOM *p_sercom, uint8_t uc_pinMISO, uint8_t uc_pinSCK, uint8_t uc_pinMOSI, SercomSpiTXPad, SercomRXPad);
 
-
   byte transfer(uint8_t data);
   uint16_t transfer16(uint16_t data);
   void transfer(void *buf, size_t count);
+  void transfer(const void* txbuf, void* rxbuf, size_t count,
+         bool block = true);
+  void waitForTransfer(void);
 
   // Transaction Functions
   void usingInterrupt(int interruptNumber);
@@ -116,6 +136,20 @@ class SPIClass {
   void setDataMode(uint8_t uc_mode);
   void setClockDivider(uint8_t uc_div);
 
+  // SERCOM lookup functions are available on both SAMD51 and 21.
+  volatile uint32_t *getDataRegister(void);
+  int getDMAC_ID_TX(void);
+  int getDMAC_ID_RX(void);
+  uint8_t getSercomIndex(void) { return _p_sercom->getSercomIndex(); };
+#if defined(__SAMD51__)
+  // SERCOM clock source override is available only on SAMD51.
+  void setClockSource(SercomClockSource clk);
+#else
+  // On SAMD21, this compiles to nothing, so user code doesn't need to
+  // check and conditionally compile lines for different architectures.
+  void setClockSource(SercomClockSource clk) { };
+#endif // end __SAMD51__
+
   private:
   void init();
   void config(SPISettings settings);
@@ -132,6 +166,14 @@ class SPIClass {
   uint8_t interruptMode;
   char interruptSave;
   uint32_t interruptMask;
+
+  // transfer(txbuf, rxbuf, count, block) uses DMA if possible
+  Adafruit_ZeroDMA readChannel,
+                   writeChannel;
+  DmacDescriptor  *readDescriptor  = NULL,
+                  *writeDescriptor = NULL;
+  volatile bool    dma_busy = false;
+  static void      dmaCallback(Adafruit_ZeroDMA *dma);
 };
 
 #if SPI_INTERFACES_COUNT > 0
@@ -155,14 +197,12 @@ class SPIClass {
 
 // For compatibility with sketches designed for AVR @ 16 MHz
 // New programs should use SPI.beginTransaction to set the SPI clock
-#if F_CPU == 48000000
-  #define SPI_CLOCK_DIV2   6
-  #define SPI_CLOCK_DIV4   12
-  #define SPI_CLOCK_DIV8   24
-  #define SPI_CLOCK_DIV16  48
-  #define SPI_CLOCK_DIV32  96
-  #define SPI_CLOCK_DIV64  192
-  #define SPI_CLOCK_DIV128 255
-#endif
+#define SPI_CLOCK_DIV2   (MAX_SPI * 2 / 8000000)
+#define SPI_CLOCK_DIV4   (MAX_SPI * 2 / 4000000)
+#define SPI_CLOCK_DIV8   (MAX_SPI * 2 / 2000000)
+#define SPI_CLOCK_DIV16  (MAX_SPI * 2 / 1000000)
+#define SPI_CLOCK_DIV32  (MAX_SPI * 2 / 500000)
+#define SPI_CLOCK_DIV64  (MAX_SPI * 2 / 250000)
+#define SPI_CLOCK_DIV128 (MAX_SPI * 2 / 125000)
 
 #endif
