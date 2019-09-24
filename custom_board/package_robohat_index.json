@@ -21,9 +21,6 @@
           "boards": [
             {
               "name": "Robo HAT MM1 M0"
-            },
-            {
-              "name": "Robo HAT MM1 M4"
             }
           ],
           "toolsDependencies": [
