@@ -185,10 +185,14 @@ static const uint8_t SCL1 = PIN_WIRE1_SCL;
 #define PIN_USB_HOST_ENABLE (25ul)
 #define PIN_USB_DM          (26ul)
 #define PIN_USB_DP          (27ul)
+
 /*
  * I2S Interfaces
  */
 #define I2S_INTERFACES_COUNT 0
+
+#define I2S_DEVICE          0
+// no I2S on G19!
 
 #ifdef __cplusplus
 }

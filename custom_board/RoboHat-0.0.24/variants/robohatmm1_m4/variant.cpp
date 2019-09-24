@@ -21,6 +21,10 @@
 /*
  * Pins descriptions
  */
+
+// TCC0 IOSET6
+// TCC1 IOSET1
+// TCC2 IOSET1
 const PinDescription g_APinDescription[]=
 {
   // 0..13 - Digital pins
