@@ -26,8 +26,8 @@ const PinDescription g_APinDescription[]=
   // 0..13 - Digital pins
   // ----------------------
   // 0/1 - SERCOM/UART (Serial1) - for GPS
-  { PORTB,  3, PIO_SERCOM_ALT, PIN_ATTR_PWM_E, ADC_Channel15, TC6_CH1, TC7_CH1, EXTERNAL_INT_3 }, // SERCOM 5.1
-  { PORTB,  2, PIO_SERCOM_ALT, PIN_ATTR_PWM_E, ADC_Channel14, TC6_CH0, TC7_CH0, EXTERNAL_INT_2 }, // SERCOM 5.0
+  { PORTB,  3, PIO_SERCOM_ALT, PIN_ATTR_PWM_E, ADC_Channel15, TC6_CH1, NOT_ON_TIMER, EXTERNAL_INT_3 }, // SERCOM 5.1
+  { PORTB,  2, PIO_SERCOM_ALT, PIN_ATTR_PWM_E, ADC_Channel14, TC6_CH0, NOT_ON_TIMER, EXTERNAL_INT_2 }, // SERCOM 5.0
     
   // 2..9 - SERVO
   { PORTA,  18, PIO_DIGITAL, PIN_ATTR_PWM_F, No_ADC_Channel, TCC1_CH2, TC3_CH0, EXTERNAL_INT_2 }, //
