@@ -16,8 +16,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _VARIANT_ROBOHAT_MM1_
-#define _VARIANT_ROBOHAT_MM1_
+#ifndef _VARIANT_ROBOHATMM1_MM1_M4_
+#define _VARIANT_ROBOHATMM1_MM1_M4_
 
 // The definitions here needs a SAMD core >=1.6.10
 #define ARDUINO_SAMD_VARIANT_COMPLIANCE 10610
@@ -30,7 +30,11 @@
 #define VARIANT_MAINOSC		(32768ul)
 
 /** Master clock frequency */
-#define VARIANT_MCK			  (48000000ul)
+#define VARIANT_MCK        (F_CPU)
+
+#define VARIANT_GCLK0_FREQ (F_CPU)
+#define VARIANT_GCLK1_FREQ (48000000UL)
+#define VARIANT_GCLK2_FREQ (100000000UL)
 
 /*----------------------------------------------------------------------------
  *        Headers
@@ -53,12 +57,11 @@ extern "C"
  *----------------------------------------------------------------------------*/
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (30u)
-#define NUM_DIGITAL_PINS     (26u)
-#define NUM_ANALOG_INPUTS    (4u)
-#define NUM_ANALOG_OUTPUTS   (1u)
-
-#define analogInputToDigitalPin(p)  ((p < 4u) ? (p) + 14u : -1)
+#define PINS_COUNT           (40u)
+#define NUM_DIGITAL_PINS     (27u)
+#define NUM_ANALOG_INPUTS    (7u)
+#define NUM_ANALOG_OUTPUTS   (2u)
+#define analogInputToDigitalPin(p)  ((p < NUM_ANALOG_INPUTS) ? (p) + PIN_A0 : -1)
 
 #define digitalPinToPort(P)        ( &(PORT->Group[g_APinDescription[P].ulPort]) )
 #define digitalPinToBitMask(P)     ( 1 << g_APinDescription[P].ulPin )
@@ -83,105 +86,80 @@ extern "C"
 #define LED_BUILTIN          PIN_LED_13
 
 
-/* ROBO HAT MM1 pins */
-#define ROBOHAT_SERVO1      (4ul)
-#define ROBOHAT_SERVO2      (ROBOHAT_SERVO1 + 1)
-#define ROBOHAT_SERVO3      (ROBOHAT_SERVO2 + 1)
-#define ROBOHAT_SERVO4      (ROBOHAT_SERVO3 + 1)
-#define ROBOHAT_SERVO5      (ROBOHAT_SERVO4 + 1)
-#define ROBOHAT_SERVO6      (ROBOHAT_SERVO5 + 1)
-#define ROBOHAT_SERVO7      (ROBOHAT_SERVO6 + 1)
-#define ROBOHAT_SERVO8      (ROBOHAT_SERVO7 + 1)
-
-static const uint8_t D0  = ROBOHAT_SERVO1;
-static const uint8_t D1  = ROBOHAT_SERVO2;
-static const uint8_t D2  = ROBOHAT_SERVO3;
-static const uint8_t D3  = ROBOHAT_SERVO4;
-static const uint8_t D4  = ROBOHAT_SERVO5;
-static const uint8_t D5  = ROBOHAT_SERVO6;
-static const uint8_t D6  = ROBOHAT_SERVO7;
-static const uint8_t D7  = ROBOHAT_SERVO8;
-
-#define ROBOHAT_EXTERNAL_NEOPIXEL (12ul)
-static const uint8_t NEOPIXEL = ROBOHAT_EXTERNAL_NEOPIXEL;
-
-#define ROBOHAT_RCH1      (14ul)
-#define ROBOHAT_RCH2      (ROBOHAT_RCH1 + 1)
-#define ROBOHAT_RCH3      (ROBOHAT_RCH2 + 1)
-#define ROBOHAT_RCH4      (ROBOHAT_RCH3 + 1)
-#define PIN_DAC0          (14ul)
-#define PIN_BATTERY       (ROBOHAT_RCH4 + 1)
-
-static const uint8_t A0  = ROBOHAT_RCH1;
-static const uint8_t A1  = ROBOHAT_RCH2;
-static const uint8_t A2  = ROBOHAT_RCH3;
-static const uint8_t A3  = ROBOHAT_RCH4;
-static const uint8_t DAC0 = PIN_DAC0;
-static const uint8_t BATTERY = PIN_BATTERY;
-
+/*
+ * Analog pins
+ */
 #define PIN_A0               (14ul)
 #define PIN_A1               (PIN_A0 + 1)
 #define PIN_A2               (PIN_A0 + 2)
 #define PIN_A3               (PIN_A0 + 3)
 #define PIN_A4               (PIN_A0 + 4)
-#define PIN_BATTERY          (PIN_A0 + 5)
+#define PIN_A5               (PIN_A0 + 5)
+#define PIN_A6               (PIN_A0 + 6)
+#define PIN_DAC0             (30ul)
+#define PIN_DAC1             (31ul)
 
-#define ADC_RESOLUTION		20
+static const uint8_t A0  = PIN_A0;
+static const uint8_t A1  = PIN_A1;
+static const uint8_t A2  = PIN_A2;
+static const uint8_t A3  = PIN_A3;
+static const uint8_t A4  = PIN_A4;
+static const uint8_t A5  = PIN_A5;
+static const uint8_t A6  = PIN_A6 ;
+
+static const uint8_t DAC0 = PIN_DAC0;
+static const uint8_t DAC1 = PIN_DAC1;
+
+#define ADC_RESOLUTION		12
+
 
 // Other pins
-#define PIN_POWER_ENABLE              (38ul)
-static const uint8_t POWER_ENABLE = PIN_POWER_ENABLE;
-#define PIN_POWER_OFF                 (39ul)
-static const uint8_t POWER_OFF = PIN_POWER_OFF;
+#define PIN_ATN              (27ul)
+static const uint8_t ATN = PIN_ATN;
+
 /*
  * Serial interfaces
  */
-
-// Serial
-// #define PIN_SERIAL_RX       (32ul)
-// #define PIN_SERIAL_TX       (33ul)
-// #define PAD_SERIAL_TX       (UART_TX_PAD_2)
-// #define PAD_SERIAL_RX       (SERCOM_RX_PAD_3)
-
-// Serial1
-#define PIN_SERIAL1_TX       (27ul)
-#define PIN_SERIAL1_RX       (28ul)
-#define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+// Serial1 (SERCOM1 - RPi)
+#define PIN_SERIAL1_RX       (0ul)
+#define PIN_SERIAL1_TX       (1ul)
 #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIAL1_TX       (UART_TX_PAD_0)
 
-// SerialGPS
-#define PIN_SERIAL2_TX       (31ul)
-#define PIN_SERIAL2_RX       (32ul)
-#define PAD_SERIAL2_TX       (UART_TX_PAD_0)
+// Serial2 (SERCOM5 - GPS)
+#define PIN_SERIAL2_RX       (39ul)
+#define PIN_SERIAL2_TX       (40ul)
 #define PAD_SERIAL2_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIAL2_TX       (UART_TX_PAD_0)
+
 
 /*
  * SPI Interfaces
  */
 #define SPI_INTERFACES_COUNT 2
 
-/* External SPI */
-#define PIN_SPI_MISO         (19u)
-#define PIN_SPI_MOSI         (20u)
-#define PIN_SPI_SCK          (21u)
-#define PERIPH_SPI           sercom4
-#define PAD_SPI_TX    SPI_PAD_2_SCK_3
-#define PAD_SPI_RX    SERCOM_RX_PAD_0
+/* SPI FLASH */
+#define PIN_SPI_MISO         (12u)
+#define PIN_SPI_MOSI         (10u)
+#define PIN_SPI_SCK          (11u)
+#define PERIPH_SPI           sercom2
+#define PAD_SPI_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI_RX           SERCOM_RX_PAD_2
 
-static const uint8_t SS   = 22 ;	// HW SS isn't used. Set here only for reference.
+static const uint8_t SS   = 34 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
 
-/* SPI FLASH */
-#define PIN_SPI1_MISO         (23u)
-#define PIN_SPI1_MOSI         (24u)
-#define PIN_SPI1_SCK          (25u)
-#define PERIPH_SPI1          sercom2
-#define PAD_SPI1_TX   SPI_PAD_0_SCK_1
-#define PAD_SPI1_RX   SERCOM_RX_PAD_2
 
-static const uint8_t SS1   = 26 ;	// HW SS isn't used. Set here only for reference.
+#define PIN_SPI1_MISO         (36u)
+#define PIN_SPI1_MOSI         (37u)
+#define PIN_SPI1_SCK          (38u)
+#define PERIPH_SPI1           sercom4
+#define PAD_SPI1_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI1_RX           SERCOM_RX_PAD_3
+
+static const uint8_t SS1   = 35 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI1 = PIN_SPI1_MOSI ;
 static const uint8_t MISO1 = PIN_SPI1_MISO ;
 static const uint8_t SCK1  = PIN_SPI1_SCK ;
@@ -191,18 +169,16 @@ static const uint8_t SCK1  = PIN_SPI1_SCK ;
  */
 #define WIRE_INTERFACES_COUNT 2
 
-//internal sensors
-#define PIN_WIRE_SDA         (0u)
-#define PIN_WIRE_SCL         (1u)
+#define PIN_WIRE_SDA         (22u)
+#define PIN_WIRE_SCL         (21u)
 #define PERIPH_WIRE          sercom3
 #define WIRE_IT_HANDLER      SERCOM3_Handler
 
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
 
-//external port
-#define PIN_WIRE1_SDA         (2u)
-#define PIN_WIRE1_SCL         (3u)
+#define PIN_WIRE1_SDA         (33u)
+#define PIN_WIRE1_SCL         (32u)
 #define PERIPH_WIRE1          sercom1
 #define WIRE1_IT_HANDLER      SERCOM1_Handler
 
@@ -212,13 +188,17 @@ static const uint8_t SCL1 = PIN_WIRE1_SCL;
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE (35ul)
-#define PIN_USB_DM          (36ul)
-#define PIN_USB_DP          (37ul)
+#define PIN_USB_HOST_ENABLE (25ul)
+#define PIN_USB_DM          (26ul)
+#define PIN_USB_DP          (27ul)
+
 /*
  * I2S Interfaces
  */
 #define I2S_INTERFACES_COUNT 0
+
+#define I2S_DEVICE          0
+// no I2S on G19!
 
 #ifdef __cplusplus
 }
@@ -241,10 +221,7 @@ extern SERCOM sercom3;
 extern SERCOM sercom4;
 extern SERCOM sercom5;
 
-// extern Uart Serial;
 extern Uart Serial1;
-extern Uart SerialGPS;
-
 
 #endif
 
@@ -263,14 +240,10 @@ extern Uart SerialGPS;
 //
 // SERIAL_PORT_HARDWARE_OPEN  Hardware serial ports which are open for use.  Their RX & TX
 //                            pins are NOT connected to anything by default.
-#define SERIAL_PORT_USBVIRTUAL      SerialUSB
+#define SERIAL_PORT_USBVIRTUAL      Serial
 #define SERIAL_PORT_MONITOR         Serial
-
+// Serial has no physical pins broken out, so it's not listed as HARDWARE port
 #define SERIAL_PORT_HARDWARE        Serial1
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
 
-#define SERIAL_PORT_HARDWARE        SerialGPS
-#define SERIAL_PORT_HARDWARE_OPEN   SerialGPS
-
-
-#endif
+#endif /* _VARIANT_ROBOHATMM1_MM1_ */
