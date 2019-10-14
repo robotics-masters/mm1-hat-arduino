@@ -57,10 +57,10 @@ extern "C"
  *----------------------------------------------------------------------------*/
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (40u)  
-#define NUM_DIGITAL_PINS     (27u)  
-#define NUM_ANALOG_INPUTS    (7u)   
-#define NUM_ANALOG_OUTPUTS   (2u)   
+#define PINS_COUNT           (40u)
+#define NUM_DIGITAL_PINS     (27u)
+#define NUM_ANALOG_INPUTS    (7u)
+#define NUM_ANALOG_OUTPUTS   (2u)
 #define analogInputToDigitalPin(p)  ((p < NUM_ANALOG_INPUTS) ? (p) + PIN_A0 : -1)
 
 #define digitalPinToPort(P)        ( &(PORT->Group[g_APinDescription[P].ulPort]) )
@@ -142,11 +142,11 @@ static const uint8_t ATN = PIN_ATN;
 #define PIN_SPI_MISO         (12u)
 #define PIN_SPI_MOSI         (10u)
 #define PIN_SPI_SCK          (11u)
-#define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_0_SCK_2
-#define PAD_SPI_RX           SERCOM_RX_PAD_3
+#define PERIPH_SPI           sercom2
+#define PAD_SPI_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI_RX           SERCOM_RX_PAD_2
 
-static const uint8_t SS   = 35 ;	// HW SS isn't used. Set here only for reference.
+static const uint8_t SS   = 34 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
@@ -155,11 +155,11 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
 #define PIN_SPI1_MISO         (36u)
 #define PIN_SPI1_MOSI         (37u)
 #define PIN_SPI1_SCK          (38u)
-#define PERIPH_SPI1           sercom2
-#define PAD_SPI1_TX           SPI_PAD_1_SCK_1
-#define PAD_SPI1_RX           SERCOM_RX_PAD_0
+#define PERIPH_SPI1           sercom4
+#define PAD_SPI1_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI1_RX           SERCOM_RX_PAD_3
 
-static const uint8_t SS1   = 34 ;	// HW SS isn't used. Set here only for reference.
+static const uint8_t SS1   = 35 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI1 = PIN_SPI1_MOSI ;
 static const uint8_t MISO1 = PIN_SPI1_MISO ;
 static const uint8_t SCK1  = PIN_SPI1_SCK ;
@@ -247,4 +247,3 @@ extern Uart Serial1;
 #define SERIAL_PORT_HARDWARE_OPEN   Serial1
 
 #endif /* _VARIANT_ROBOHATMM1_MM1_ */
-
