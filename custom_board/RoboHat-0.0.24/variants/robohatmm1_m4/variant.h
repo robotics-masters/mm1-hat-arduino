@@ -57,10 +57,10 @@ extern "C"
  *----------------------------------------------------------------------------*/
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (40u)  
-#define NUM_DIGITAL_PINS     (27u)  
-#define NUM_ANALOG_INPUTS    (7u)   
-#define NUM_ANALOG_OUTPUTS   (2u)   
+#define PINS_COUNT           (45u)
+#define NUM_DIGITAL_PINS     (27u)
+#define NUM_ANALOG_INPUTS    (7u)
+#define NUM_ANALOG_OUTPUTS   (2u)
 #define analogInputToDigitalPin(p)  ((p < NUM_ANALOG_INPUTS) ? (p) + PIN_A0 : -1)
 
 #define digitalPinToPort(P)        ( &(PORT->Group[g_APinDescription[P].ulPort]) )
@@ -84,6 +84,14 @@ extern "C"
 #define PIN_LED_13           (13u)
 #define PIN_LED              PIN_LED_13
 #define LED_BUILTIN          PIN_LED_13
+//other pins
+#define BUTTON               (10u)
+#define PIN_NEOPIXEL         (11u)
+#define BATTERY              (12u)
+#define POWER_OFF            (18u)
+#define GPIO24               (19u)
+#define GPIO25               (20u)
+
 
 
 /*
@@ -93,91 +101,89 @@ extern "C"
 #define PIN_A1               (PIN_A0 + 1)
 #define PIN_A2               (PIN_A0 + 2)
 #define PIN_A3               (PIN_A0 + 3)
-#define PIN_A4               (PIN_A0 + 4)
-#define PIN_A5               (PIN_A0 + 5)
-#define PIN_A6               (PIN_A0 + 6)
-#define PIN_DAC0             (30ul)
-#define PIN_DAC1             (31ul)
 
 static const uint8_t A0  = PIN_A0;
 static const uint8_t A1  = PIN_A1;
 static const uint8_t A2  = PIN_A2;
 static const uint8_t A3  = PIN_A3;
-static const uint8_t A4  = PIN_A4;
-static const uint8_t A5  = PIN_A5;
-static const uint8_t A6  = PIN_A6 ;
 
-static const uint8_t DAC0 = PIN_DAC0;
+#define PIN_DAC1             (30ul)
 static const uint8_t DAC1 = PIN_DAC1;
 
 #define ADC_RESOLUTION		12
 
 
 // Other pins
-#define PIN_ATN              (27ul)
+#define PIN_ATN              (26ul)
 static const uint8_t ATN = PIN_ATN;
 
 /*
  * Serial interfaces
  */
 // Serial1 (SERCOM1 - RPi)
-#define PIN_SERIAL1_RX       (0ul)
-#define PIN_SERIAL1_TX       (1ul)
-#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
-#define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+// #define PIN_SERIAL1_RX       (0ul)
+// #define PIN_SERIAL1_TX       (1ul)
+// #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
+// #define PAD_SERIAL1_TX       (UART_TX_PAD_0)
 
-// Serial2 (SERCOM5 - GPS)
-#define PIN_SERIAL2_RX       (39ul)
-#define PIN_SERIAL2_TX       (40ul)
-#define PAD_SERIAL2_RX       (SERCOM_RX_PAD_1)
-#define PAD_SERIAL2_TX       (UART_TX_PAD_0)
+// SerialGPS (SERCOM5 - GPS)
+#define PIN_SERIALGPS_RX       (38ul)
+#define PIN_SERIALGPS_TX       (39ul)
+#define PAD_SERIALGPS_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIALGPS_TX      (UART_TX_PAD_0)
 
+// // SerialGrove (SERCOM0 - Grove)
+// #define PIN_SERIALGROVE_RX     (44ul)
+// #define PIN_SERIALGROVE_TX     (45ul)
+// #define PAD_SERIALGROVE_RX     (SERCOM_RX_PAD_1)
+// #define PAD_SERIALGROVE_TX     (UART_TX_PAD_0)
 
 /*
  * SPI Interfaces
  */
 #define SPI_INTERFACES_COUNT 2
 
-/* SPI FLASH */
-#define PIN_SPI_MISO         (12u)
-#define PIN_SPI_MOSI         (10u)
-#define PIN_SPI_SCK          (11u)
+/* SPI PORT */
+#define PIN_SPI_MISO         (35u)
+#define PIN_SPI_MOSI         (36u)
+#define PIN_SPI_SCK          (37u)
 #define PERIPH_SPI           sercom4
-#define PAD_SPI_TX           SPI_PAD_0_SCK_2
+#define PAD_SPI_TX           SPI_PAD_0_SCK_1
 #define PAD_SPI_RX           SERCOM_RX_PAD_3
 
-static const uint8_t SS   = 35 ;	// HW SS isn't used. Set here only for reference.
+static const uint8_t SS   = 34 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
 
-
-#define PIN_SPI1_MISO         (36u)
-#define PIN_SPI1_MOSI         (37u)
-#define PIN_SPI1_SCK          (38u)
+/* SPI FLASH */
+#define PIN_SPI1_MISO         (12u)
+#define PIN_SPI1_MOSI         (10u)
+#define PIN_SPI1_SCK          (11u)
 #define PERIPH_SPI1           sercom2
-#define PAD_SPI1_TX           SPI_PAD_1_SCK_1
-#define PAD_SPI1_RX           SERCOM_RX_PAD_0
+#define PAD_SPI1_TX           SPI_PAD_0_SCK_1
+#define PAD_SPI1_RX           SERCOM_RX_PAD_2
 
-static const uint8_t SS1   = 34 ;	// HW SS isn't used. Set here only for reference.
+static const uint8_t SS1   = 33 ;	// HW SS isn't used. Set here only for reference.
 static const uint8_t MOSI1 = PIN_SPI1_MOSI ;
 static const uint8_t MISO1 = PIN_SPI1_MISO ;
 static const uint8_t SCK1  = PIN_SPI1_SCK ;
 
+
 /*
  * Wire Interfaces
  */
-#define WIRE_INTERFACES_COUNT 2
+#define WIRE_INTERFACES_COUNT 3
 
-#define PIN_WIRE_SDA         (22u)
-#define PIN_WIRE_SCL         (21u)
+#define PIN_WIRE_SDA         (21u)
+#define PIN_WIRE_SCL         (22u)
 #define PERIPH_WIRE          sercom3
 #define WIRE_IT_HANDLER      SERCOM3_Handler
 
 static const uint8_t SDA = PIN_WIRE_SDA;
 static const uint8_t SCL = PIN_WIRE_SCL;
 
-#define PIN_WIRE1_SDA         (33u)
+#define PIN_WIRE1_SDA         (31u)
 #define PIN_WIRE1_SCL         (32u)
 #define PERIPH_WIRE1          sercom1
 #define WIRE1_IT_HANDLER      SERCOM1_Handler
@@ -185,12 +191,21 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 static const uint8_t SDA1 = PIN_WIRE1_SDA;
 static const uint8_t SCL1 = PIN_WIRE1_SCL;
 
+#define PIN_WIRE2_SDA         (42u)
+#define PIN_WIRE2_SCL         (43u)
+#define PERIPH_WIRE2          sercom0
+#define WIRE2_IT_HANDLER      SERCOM0_Handler
+
+static const uint8_t GROVE_SDA = PIN_WIRE2_SDA;
+static const uint8_t GROVE_SCL = PIN_WIRE2_SCL;
+
+
 /*
  * USB
  */
-#define PIN_USB_HOST_ENABLE (25ul)
-#define PIN_USB_DM          (26ul)
-#define PIN_USB_DP          (27ul)
+#define PIN_USB_HOST_ENABLE (26ul)
+#define PIN_USB_DM          (27ul)
+#define PIN_USB_DP          (28ul)
 
 /*
  * I2S Interfaces
@@ -221,7 +236,7 @@ extern SERCOM sercom3;
 extern SERCOM sercom4;
 extern SERCOM sercom5;
 
-extern Uart Serial1;
+extern Uart SerialGPS;
 
 #endif
 
@@ -243,8 +258,7 @@ extern Uart Serial1;
 #define SERIAL_PORT_USBVIRTUAL      Serial
 #define SERIAL_PORT_MONITOR         Serial
 // Serial has no physical pins broken out, so it's not listed as HARDWARE port
-#define SERIAL_PORT_HARDWARE        Serial1
-#define SERIAL_PORT_HARDWARE_OPEN   Serial1
+#define SERIAL_PORT_HARDWARE        SerialGPS
+#define SERIAL_PORT_HARDWARE_OPEN   SerialGPS
 
 #endif /* _VARIANT_ROBOHATMM1_MM1_ */
-
