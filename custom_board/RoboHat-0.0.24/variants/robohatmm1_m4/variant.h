@@ -104,14 +104,14 @@ extern "C"
 #define PIN_SERVO7               (SERVO1 + 6)
 #define PIN_SERVO8               (SERVO1 + 7)
   
-static const uin8_t SERVO1 = PIN_SERVO1;
-static const uin8_t SERVO2 = PIN_SERVO2;
-static const uin8_t SERVO3 = PIN_SERVO3;
-static const uin8_t SERVO4 = PIN_SERVO4;
-static const uin8_t SERVO5 = PIN_SERVO5;  
-static const uin8_t SERVO6 = PIN_SERVO6;
-static const uin8_t SERVO7 = PIN_SERVO7;
-static const uin8_t SERVO8 = PIN_SERVO8;
+static const uint8_t SERVO1 = PIN_SERVO1;
+static const uint8_t SERVO2 = PIN_SERVO2;
+static const uint8_t SERVO3 = PIN_SERVO3;
+static const uint8_t SERVO4 = PIN_SERVO4;
+static const uint8_t SERVO5 = PIN_SERVO5;  
+static const uint8_t SERVO6 = PIN_SERVO6;
+static const uint8_t SERVO7 = PIN_SERVO7;
+static const uint8_t SERVO8 = PIN_SERVO8;
   
 /*
  * Analog pins
