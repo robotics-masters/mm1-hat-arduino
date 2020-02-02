@@ -96,13 +96,13 @@ extern "C"
  * PWM pins
  */
 #define PIN_SERVO1               (2ul)
-#define PIN_SERVO2               (SERVO1 + 1)
-#define PIN_SERVO3               (SERVO1 + 2)
-#define PIN_SERVO4               (SERVO1 + 3)
-#define PIN_SERVO5               (SERVO1 + 4)
-#define PIN_SERVO6               (SERVO1 + 5)
-#define PIN_SERVO7               (SERVO1 + 6)
-#define PIN_SERVO8               (SERVO1 + 7)
+#define PIN_SERVO2               (PIN_SERVO1 + 1)
+#define PIN_SERVO3               (PIN_SERVO1 + 2)
+#define PIN_SERVO4               (PIN_SERVO1 + 3)
+#define PIN_SERVO5               (PIN_SERVO1 + 4)
+#define PIN_SERVO6               (PIN_SERVO1 + 5)
+#define PIN_SERVO7               (PIN_SERVO1 + 6)
+#define PIN_SERVO8               (PIN_SERVO1 + 7)
   
 static const uint8_t SERVO1 = PIN_SERVO1;
 static const uint8_t SERVO2 = PIN_SERVO2;
