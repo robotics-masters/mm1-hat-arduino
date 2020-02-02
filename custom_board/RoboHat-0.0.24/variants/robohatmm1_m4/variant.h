@@ -92,8 +92,27 @@ extern "C"
 #define GPIO24               (19u)
 #define GPIO25               (20u)
 
-
-
+/*
+ * PWM pins
+ */
+#define PIN_SERVO1               (2ul)
+#define PIN_SERVO2               (SERVO1 + 1)
+#define PIN_SERVO3               (SERVO1 + 2)
+#define PIN_SERVO4               (SERVO1 + 3)
+#define PIN_SERVO5               (SERVO1 + 4)
+#define PIN_SERVO6               (SERVO1 + 5)
+#define PIN_SERVO7               (SERVO1 + 6)
+#define PIN_SERVO8               (SERVO1 + 7)
+  
+static const uin8_t SERVO1 = PIN_SERVO1;
+static const uin8_t SERVO2 = PIN_SERVO2;
+static const uin8_t SERVO3 = PIN_SERVO3;
+static const uin8_t SERVO4 = PIN_SERVO4;
+static const uin8_t SERVO5 = PIN_SERVO5;  
+static const uin8_t SERVO6 = PIN_SERVO6;
+static const uin8_t SERVO7 = PIN_SERVO7;
+static const uin8_t SERVO8 = PIN_SERVO8;
+  
 /*
  * Analog pins
  */
@@ -106,6 +125,11 @@ static const uint8_t A0  = PIN_A0;
 static const uint8_t A1  = PIN_A1;
 static const uint8_t A2  = PIN_A2;
 static const uint8_t A3  = PIN_A3;
+
+static const uint8_t RCC1  = PIN_A0;
+static const uint8_t RCC2  = PIN_A1;
+static const uint8_t RCC3  = PIN_A2;
+static const uint8_t RCC4  = PIN_A3;
 
 #define PIN_DAC1             (30ul)
 static const uint8_t DAC1 = PIN_DAC1;
