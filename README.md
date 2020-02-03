@@ -9,3 +9,5 @@ Copy and paste the following URL into the File > Preferences > "Additional Board
 ```
 https://raw.githubusercontent.com/robotics-masters/mm1-hat-arduino/master/custom_board/package_robohat_index.json
 ```
+
+The latest version is 0.0.24
