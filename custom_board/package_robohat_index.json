@@ -13,10 +13,10 @@
           "architecture": "samd",
           "version": "0.0.26",
           "category": "Contributed",
-          "url": "https://github.com/robotics-masters/mm1-hat-arduino/blob/master/custom_board/roboticsmasters-samd-0.0.26.zip?raw=true",
-          "archiveFileName": "roboticsmasters-samd-0.0.26.zip",
-          "checksum": "SHA-256:1554c2d92fac4c0a17f8792f67190f6ff937340978a62b89798f7a1b605fd18f",
-          "size": "8689306",
+          "url": "https://github.com/robotics-masters/mm1-hat-arduino/blob/master/custom_board/RoboHat-0.0.26.zip?raw=true",
+          "archiveFileName": "RoboHat-0.0.26.zip",
+          "checksum": "SHA-256:1927B1B20B0FFA36D1F1BFBA028F90756CEE82B42227C898417ABCFA56ADC6F6",
+          "size": "8773152",
           "boards": [
             {
               "name": "Robo HAT MM1"
