@@ -16,8 +16,8 @@ The latest version is 0.0.26
 
 A number of predefined serial ports are in the Robo HAT MM1 M4 boards.
 
-Serial1 - Raspberry Pi Serial Ports (SERCOM1)
-Serial2 - GPS Serial Port (SERCOM5)
-Serial3 - GROVE Serial Port (SERCOM0)
+- Serial1 - Raspberry Pi Serial Ports (SERCOM1)
+- Serial2 - GPS Serial Port (SERCOM5)
+- Serial3 - GROVE Serial Port (SERCOM0)
 
 
