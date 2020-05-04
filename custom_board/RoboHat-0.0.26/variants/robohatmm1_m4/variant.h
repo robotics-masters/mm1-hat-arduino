@@ -147,22 +147,22 @@ static const uint8_t ATN = PIN_ATN;
  * Serial interfaces
  */
 // Serial1 (SERCOM1 - RPi)
-// #define PIN_SERIAL1_RX       (0ul)
-// #define PIN_SERIAL1_TX       (1ul)
-// #define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
-// #define PAD_SERIAL1_TX       (UART_TX_PAD_0)
+#define PIN_SERIAL1_RX       (0ul)
+#define PIN_SERIAL1_TX       (1ul)
+#define PAD_SERIAL1_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIAL1_TX       (UART_TX_PAD_0)
 
-// SerialGPS (SERCOM5 - GPS)
-#define PIN_SERIALGPS_RX       (39ul)
-#define PIN_SERIALGPS_TX       (40ul)
-#define PAD_SERIALGPS_RX       (SERCOM_RX_PAD_1)
-#define PAD_SERIALGPS_TX      (UART_TX_PAD_0)
+// Serial2 (SERCOM5 - GPS)
+#define PIN_SERIAL2_RX       (39ul)
+#define PIN_SERIAL2_TX       (40ul)
+#define PAD_SERIAL2_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIAL2_TX       (UART_TX_PAD_0)
 
-// // SerialGrove (SERCOM0 - Grove)
-// #define PIN_SERIALGROVE_RX     (44ul)
-// #define PIN_SERIALGROVE_TX     (45ul)
-// #define PAD_SERIALGROVE_RX     (SERCOM_RX_PAD_1)
-// #define PAD_SERIALGROVE_TX     (UART_TX_PAD_0)
+// SerialGrove (SERCOM0 - Grove)
+#define PIN_SERIAL3_RX       (44ul)
+#define PIN_SERIAL3_TX       (45ul)
+#define PAD_SERIAL3_RX       (SERCOM_RX_PAD_1)
+#define PAD_SERIAL3_TX       (UART_TX_PAD_0)
 
 /*
  * SPI Interfaces
@@ -262,7 +262,9 @@ extern SERCOM sercom3;
 extern SERCOM sercom4;
 extern SERCOM sercom5;
 
-extern Uart SerialGPS;
+extern Uart Serial1; //RPI
+extern Uart Serial2; //GPS
+extern Uart Serial3; //GROVE
 
 #endif
 
@@ -284,7 +286,7 @@ extern Uart SerialGPS;
 #define SERIAL_PORT_USBVIRTUAL      Serial
 #define SERIAL_PORT_MONITOR         Serial
 // Serial has no physical pins broken out, so it's not listed as HARDWARE port
-#define SERIAL_PORT_HARDWARE        SerialGPS
-#define SERIAL_PORT_HARDWARE_OPEN   SerialGPS
+#define SERIAL_PORT_HARDWARE        Serial1
+#define SERIAL_PORT_HARDWARE_OPEN   Serial1
 
 #endif /* _VARIANT_ROBOHATMM1_MM1_ */

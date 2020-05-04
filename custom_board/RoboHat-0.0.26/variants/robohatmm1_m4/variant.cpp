@@ -134,31 +134,57 @@ SERCOM sercom3( SERCOM3 ) ;
 SERCOM sercom4( SERCOM4 ) ;
 SERCOM sercom5( SERCOM5 ) ;
 
-// Uart Serial1( &sercom1, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX ) ;
-Uart SerialGPS( &sercom5, PIN_SERIALGPS_RX, PIN_SERIALGPS_TX, PAD_SERIALGPS_RX, PAD_SERIALGPS_TX ) ;
-// Uart SerialGROVE( &sercom0, PIN_SERIALGROVE_RX, PIN_SERIALGROVE_TX, PAD_SERIALGROVE_RX, PAD_SERIALGROVE_TX ) ;
+Uart Serial1(&sercom1, PIN_SERIAL1_RX, PIN_SERIAL1_TX, PAD_SERIAL1_RX, PAD_SERIAL1_TX ); // RPI (1)
+Uart Serial2(&sercom5, PIN_SERIAL2_RX, PIN_SERIAL2_TX, PAD_SERIAL2_RX, PAD_SERIAL2_TX ); // GPS (5)
+Uart Serial3(&sercom0, PIN_SERIAL3_RX, PIN_SERIAL3_TX, PAD_SERIAL3_RX, PAD_SERIAL3_TX ); // GROVE (0)
 
-// void SERCOM0_0_Handler()
-// {
-//   SerialGROVE.IrqHandler();
-// }
-// void SERCOM0_1_Handler()
-// {
-//   SerialGROVE.IrqHandler();
-// }
-// void SERCOM1_0_Handler()
-// {
-//   Serial1.IrqHandler();
-// }
-// void SERCOM1_1_Handler()
-// {
-//   Serial1.IrqHandler();
-// }
+void SERCOM0_0_Handler()
+{
+  Serial3.IrqHandler();
+}
+void SERCOM0_1_Handler()
+{
+  Serial3.IrqHandler();
+}
+void SERCOM0_2_Handler()
+{
+  Serial3.IrqHandler();
+}
+void SERCOM0_3_Handler()
+{
+  Serial3.IrqHandler();
+}
+
+void SERCOM1_0_Handler()
+{
+  Serial1.IrqHandler();
+}
+void SERCOM1_1_Handler()
+{
+  Serial1.IrqHandler();
+}
+void SERCOM1_2_Handler()
+{
+  Serial1.IrqHandler();
+}
+void SERCOM1_3_Handler()
+{
+  Serial1.IrqHandler();
+}
+
 void SERCOM5_0_Handler()
 {
-  SerialGPS.IrqHandler();
+  Serial2.IrqHandler();
 }
 void SERCOM5_1_Handler()
 {
-  SerialGPS.IrqHandler();
+  Serial2.IrqHandler();
+}
+void SERCOM5_2_Handler()
+{
+  Serial2.IrqHandler();
+}
+void SERCOM5_3_Handler()
+{
+  Serial2.IrqHandler();
 }
