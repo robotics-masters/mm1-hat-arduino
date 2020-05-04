@@ -1,0 +1,122 @@
+# Copyright (c) 2014-2015 Arduino LLC.  All right reserved.
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+menu.cache=Cache
+menu.speed=CPU Speed
+menu.opt=Optimize
+menu.maxqspi=Max QSPI
+menu.usbstack=USB Stack
+menu.debug=Debug
+
+# Robo HAT MM1 M0 (SAMD21)
+# ------------------------------
+#robo_hat_mm1.name=Robo HAT MM1 (SAMD212)
+#robo_hat_mm1.vid.0=0x1209
+#robo_hat_mm1.pid.0=0x4D44
+#robo_hat_mm1.vid.1=0x1209
+#robo_hat_mm1.pid.1=0x4D45
+#robo_hat_mm1.upload.tool=bossac
+#robo_hat_mm1.upload.protocol=sam-ba
+#robo_hat_mm1.upload.maximum_size=262144
+#robo_hat_mm1.upload.offset=0x2000
+#robo_hat_mm1.upload.use_1200bps_touch=true
+#robo_hat_mm1.upload.wait_for_upload_port=true
+#robo_hat_mm1.upload.native_usb=true
+#robo_hat_mm1.build.mcu=cortex-m0plus
+#robo_hat_mm1.build.f_cpu=48000000L
+#robo_hat_mm1.build.usb_product="Robo HAT MM1 M0"
+#robo_hat_mm1.build.usb_manufacturer="Robotics Masters LTD"
+#robo_hat_mm1.build.board=ROBOHATMM1_M0
+#robo_hat_mm1.build.core=arduino
+#robo_hat_mm1.build.extra_flags=-DCRYSTALLESS -DARDUINO_SAMD_ZERO -DARM_MATH_CM0PLUS -DROBOTICSMASTERS_ROBOHATMM1_M0 -D__SAMD21G18A__ {build.usb_flags}
+#robo_hat_mm1.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+#robo_hat_mm1.build.openocdscript=openocd_scripts/robohatmm1_m0.cfg
+#robo_hat_mm1.build.variant=robohatmm1_m0
+#robo_hat_mm1.build.variant_system_lib=
+#robo_hat_mm1.build.vid=0x1209
+#robo_hat_mm1.build.pid=0x4D44
+#robo_hat_mm1.bootloader.tool=openocd
+#robo_hat_mm1.bootloader.file=robohatmm1_m0/bootloader-robohatmm1_m0.bin
+#robo_hat_mm1.menu.usbstack.arduino=Arduino
+#robo_hat_mm1.menu.usbstack.tinyusb=TinyUSB
+#robo_hat_mm1.menu.usbstack.tinyusb.build.flags.usbstack=-DUSE_TINYUSB
+#robo_hat_mm1.menu.debug.off=Off
+#robo_hat_mm1.menu.debug.on=On
+#robo_hat_mm1.menu.debug.on.build.flags.debug=-g
+
+
+# Robo HAT MM1 M4 (SAMD51)
+# ------------------------------
+robo_hat_mm1_m4.name=Robo HAT MM1 (SAMD51)
+robo_hat_mm1_m4.vid.0=0x1209
+robo_hat_mm1_m4.pid.0=0x4D44
+robo_hat_mm1_m4.vid.1=0x1209
+robo_hat_mm1_m4.pid.1=0x4D45
+robo_hat_mm1_m4.upload.tool=bossac18
+robo_hat_mm1_m4.upload.protocol=sam-ba
+robo_hat_mm1_m4.upload.maximum_size=507904
+robo_hat_mm1_m4.upload.offset=0x4000
+robo_hat_mm1_m4.upload.use_1200bps_touch=true
+robo_hat_mm1_m4.upload.wait_for_upload_port=true
+robo_hat_mm1_m4.upload.native_usb=true
+robo_hat_mm1_m4.build.mcu=cortex-m4
+#robo_hat_mm1_m4.build.f_cpu=120000000L
+robo_hat_mm1_m4.build.usb_product="Robo HAT MM1 M4"
+robo_hat_mm1_m4.build.usb_manufacturer="Robotics Masters LTD"
+robo_hat_mm1_m4.build.board=ROBOHATMM1_M4
+robo_hat_mm1_m4.build.core=arduino
+robo_hat_mm1_m4.build.extra_flags=-D__SAMD51G19A__ -DROBOTICSMASTERS_ROBOHATMM1_M4 -D__SAMD51__ {build.usb_flags} -D__FPU_PRESENT -DARM_MATH_CM4 -DCRYSTALLESS -mfloat-abi=hard -mfpu=fpv4-sp-d16
+robo_hat_mm1_m4.build.ldscript=linker_scripts/gcc/flash_with_bootloader.ld
+robo_hat_mm1_m4.build.openocdscript=openocd_scripts/arduino_zero.cfg
+robo_hat_mm1_m4.build.variant=robohatmm1_m4
+robo_hat_mm1_m4.build.variant_system_lib=
+robo_hat_mm1_m4.build.vid=0x1209
+robo_hat_mm1_m4.build.pid=0x4D45
+robo_hat_mm1_m4.bootloader.tool=openocd
+robo_hat_mm1_m4.bootloader.file=robohatmm1_m4/bootloader-robohatmm1_m4.bin
+robo_hat_mm1_m4.compiler.arm.cmsis.ldflags="-L{build.variant.path}" -larm_cortexM4lf_math -mfloat-abi=hard -mfpu=fpv4-sp-d16
+robo_hat_mm1_m4.menu.cache.on=Enabled
+robo_hat_mm1_m4.menu.cache.on.build.cache_flags=-DENABLE_CACHE
+robo_hat_mm1_m4.menu.cache.off=Disabled
+robo_hat_mm1_m4.menu.cache.off.build.cache_flags=
+robo_hat_mm1_m4.menu.speed.120=120 MHz (standard)
+robo_hat_mm1_m4.menu.speed.120.build.f_cpu=120000000L
+robo_hat_mm1_m4.menu.speed.150=150 MHz (overclock)
+robo_hat_mm1_m4.menu.speed.150.build.f_cpu=150000000L
+robo_hat_mm1_m4.menu.speed.180=180 MHz (overclock)
+robo_hat_mm1_m4.menu.speed.180.build.f_cpu=180000000L
+robo_hat_mm1_m4.menu.speed.200=200 MHz (overclock)
+robo_hat_mm1_m4.menu.speed.200.build.f_cpu=200000000L
+robo_hat_mm1_m4.menu.opt.small=Small (-Os) (standard)
+robo_hat_mm1_m4.menu.opt.small.build.flags.optimize=-Os
+robo_hat_mm1_m4.menu.opt.fast=Fast (-O2)
+robo_hat_mm1_m4.menu.opt.fast.build.flags.optimize=-O2
+robo_hat_mm1_m4.menu.opt.faster=Faster (-O3)
+robo_hat_mm1_m4.menu.opt.faster.build.flags.optimize=-O3
+robo_hat_mm1_m4.menu.opt.fastest=Fastest (-Ofast)
+robo_hat_mm1_m4.menu.opt.fastest.build.flags.optimize=-Ofast
+robo_hat_mm1_m4.menu.opt.dragons=Here be dragons (-Ofast -funroll-loops)
+robo_hat_mm1_m4.menu.opt.dragons.build.flags.optimize=-Ofast -funroll-loops
+#robo_hat_mm1_m4.menu.maxqspi.50=50 MHz (standard)
+#robo_hat_mm1_m4.menu.maxqspi.50.build.flags.maxqspi=-DVARIANT_QSPI_BAUD_DEFAULT=50000000
+#robo_hat_mm1_m4.menu.maxqspi.fcpu=CPU Speed / 2
+#robo_hat_mm1_m4.menu.maxqspi.fcpu.build.flags.maxqspi=-DVARIANT_QSPI_BAUD_DEFAULT=({build.f_cpu})
+robo_hat_mm1_m4.menu.usbstack.arduino=Arduino
+#robo_hat_mm1_m4.menu.usbstack.tinyusb=TinyUSB
+#robo_hat_mm1_m4.menu.usbstack.tinyusb.build.flags.usbstack=-DUSE_TINYUSB
+robo_hat_mm1_m4.menu.debug.off=Off
+robo_hat_mm1_m4.menu.debug.on=On
+robo_hat_mm1_m4.menu.debug.on.build.flags.debug=-g
