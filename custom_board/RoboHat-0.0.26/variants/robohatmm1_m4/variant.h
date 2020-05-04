@@ -159,8 +159,8 @@ static const uint8_t ATN = PIN_ATN;
 #define PAD_SERIAL2_TX       (UART_TX_PAD_0)
 
 // SerialGrove (SERCOM0 - Grove)
-#define PIN_SERIAL3_RX       (44ul)
-#define PIN_SERIAL3_TX       (45ul)
+#define PIN_SERIAL3_RX       (45ul)
+#define PIN_SERIAL3_TX       (46ul)
 #define PAD_SERIAL3_RX       (SERCOM_RX_PAD_1)
 #define PAD_SERIAL3_TX       (UART_TX_PAD_0)
 
